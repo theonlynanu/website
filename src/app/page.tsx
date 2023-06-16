@@ -48,7 +48,7 @@ export default function Board() {
     >
       Reset
     </button>
-    <div className=" flex-row flex-wrap w-1/4 aspect-square">
+    <div className=" flex-row flex-wrap w-1/4 aspect-square border border-black">
       <div className="flex flex-row items-stretch justify-evenly h-1/3">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -64,9 +64,9 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-      <div className="">
-        {status}
-      </div>
+    </div>
+    <div className="">
+      {status}
     </div>
     </>
   )
