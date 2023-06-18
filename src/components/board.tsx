@@ -7,10 +7,13 @@ declare global {
   type boardState = "X" | "O" | null
 }
 
-export default function Board() {
-  const [squares, setSquares] = useState<boardState[]>(Array(9).fill(null))
-  const [xIsNext, setXIsNext] = useState<boolean>(true);
-  const [gameMode, setGameMode] = useState<string>("local");
+export default function Board({
+  squares, xIsNext, onPlay}
+  
+  : {squares: boardState[]
+    , xIsNext: boolean
+    , onPlay(nextSquares: boardState[]):void
+  }) {
 
   function handleClick(i: number) {
     if (squares[i] || calculateWinner(squares)) {
@@ -22,14 +25,10 @@ export default function Board() {
     } else {
       nextSquares[i] = "O"
     }
-    setSquares(nextSquares);
-    setXIsNext(!xIsNext)
+    onPlay(nextSquares)
   }
 
-  function reset():void {
-    setSquares(Array(9).fill(null));
-    setXIsNext(true);
-  }
+
 
   const winner = calculateWinner(squares)
   let status: string;
@@ -43,14 +42,7 @@ export default function Board() {
 
   return (
     <>
-    <button 
-      className="bg-white hover:bg-gray-200 text-gray-800 font-bold border py-1 px-2 m-2 border-gray-400 rounded shadow" 
-      onClick={reset}
-    >
-      Reset
-    </button>
-
-    <div className="flex-row flex-wrap w-1/4 aspect-square border border-black">
+    <div className="flex-row flex-wrap justify-stretch w-1/4 aspect-square border border-black">
       <div className="flex flex-row items-stretch justify-evenly h-1/3">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
