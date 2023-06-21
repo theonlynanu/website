@@ -30,7 +30,7 @@ export default function Board({
     const requestBody = JSON.stringify({"state": squares})
     const config = {
       method: 'post',
-      url: `http://localhost:8080/api/ai-move/${model}`,
+      url: `https://testimage-p77sme7tjq-uk.a.run.app/api/ai-move/${model}`,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

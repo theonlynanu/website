@@ -4,6 +4,9 @@ const nextConfig = {
     experimental: {
         mdxRs: true,
     },
+    env: {
+        API_KEY: process.env.API_KEY
+    }
 }
 const withMDX = require('@next/mdx')()
 module.exports = withMDX(nextConfig)
