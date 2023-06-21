@@ -30,10 +30,11 @@ export default function Board({
     const requestBody = JSON.stringify({"state": squares})
     const config = {
       method: 'post',
-      url: `http://localhost:8000/api/ai-move/${model}`,
+      url: `http://localhost:8080/api/ai-move/${model}`,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        "X_API_KEY": process.env.API_KEY
       },
       data: requestBody
     }
@@ -41,12 +42,12 @@ export default function Board({
 
     axios.request(config)
     .then((response:any) => {
-      handleClick(response.data.ai_move[0]
+      handleClick(response.data.ai_move
     );
-    console.log(response.data.ai_move[0])
   })
   .catch((error: any) => {
     console.log(error)
+    console.log(config.data)
   });
   }
 
