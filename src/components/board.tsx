@@ -46,8 +46,7 @@ export default function Board({
     );
   })
   .catch((error: any) => {
-    console.log(error)
-    console.log(config.data)
+    console.log(error.response.status)
   });
   }
 
@@ -56,22 +55,22 @@ export default function Board({
       break;
     case "ai-first":
       if (!xIsNext) {
-        get_ai_move(squares, "minmax")
+        setTimeout(()=>get_ai_move(squares, "minmax"),300)
       };
       break;
     case "ai-second":
       if (xIsNext) {
-        get_ai_move(squares, "minmax")
+        setTimeout(()=>get_ai_move(squares, "minmax"), 300)
       };
       break;
     case "random-first":
       if (!xIsNext) {
-        get_ai_move(squares, "random")
+        setTimeout(()=>get_ai_move(squares, "random"), 300)
       };
       break;
     case "random-second":
       if (xIsNext) {
-        get_ai_move(squares, "random")
+        setTimeout(()=>get_ai_move(squares, "random"),300)
       };
       break;
   }
