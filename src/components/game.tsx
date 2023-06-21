@@ -1,10 +1,12 @@
 'use client'
 
 import Board from "../components/board"
-import Selectors from "./selectors"
 import { useState } from 'react';
 
-
+declare global {
+    type boardState = "X" | "O" | null;
+  }
+  
 export default function Game() {
     const [xIsNext, setXIsNext] = useState<boolean>(true);
 
@@ -25,21 +27,38 @@ export default function Game() {
 
   return (
     <>
-    <div className="flex flex-row">
+    <div className="flex flex-row items-center">
         <button 
-        className="bg-white hover:bg-gray-200 text-gray-800 font-bold border py-1 px-2 m-2 border-gray-400 rounded shadow" 
+        className=" bg-white hover:bg-gray-200 text-gray-800 font-bold border py-1 px-2 m-2 border-gray-400 rounded shadow" 
         onClick={reset}
         >
         Reset
         </button>
-        <select className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option>Local</option>
-            <option>AI - Move First</option>
-            <option>AI - Move Second</option>
-        </select>
+        
+        <p>Game Mode: {gameMode}</p>
+
+        <form className="p-4">
+            <label>
+            Game mode:
+            <select 
+            name="selectedGameMode" 
+            defaultValue="local"
+            onChange={e => {
+                setGameMode(e.target.value)
+                reset()}} 
+            className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="local">Local</option>
+                <option value="ai-first">AI - Move First</option>
+                <option value="ai-second">AI - Move Second</option>
+                <option value="random-first">Random - Move First</option>
+                <option value="random-second">Random - Move Second</option>
+            </select>
+            </label>
+        </form>
     </div>
+
     <div> 
-        <Board squares={currentBoard} xIsNext = {xIsNext} onPlay={handlePlay}/>
+        <Board squares={currentBoard} xIsNext = {xIsNext} onPlay={handlePlay} gameMode={gameMode}/>
     </div>
     </>
   )

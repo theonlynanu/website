@@ -1,18 +1,16 @@
 'use client'
 
+import { ThemeProvider } from "next-themes";
 import Square from "./square"
-import { useState } from 'react';
-
-declare global {
-  type boardState = "X" | "O" | null
-}
+import axios from "axios";
 
 export default function Board({
-  squares, xIsNext, onPlay}
+  squares, xIsNext, onPlay, gameMode}
   
   : {squares: boardState[]
     , xIsNext: boolean
-    , onPlay(nextSquares: boardState[]):void
+    , onPlay(nextSquares: boardState[]):any
+    , gameMode: string
   }) {
 
   function handleClick(i: number) {
@@ -27,8 +25,55 @@ export default function Board({
     }
     onPlay(nextSquares)
   }
+                                              
+  async function get_ai_move(squares: boardState[], model: string) {
+    const requestBody = JSON.stringify({"state": squares})
+    const config = {
+      method: 'post',
+      url: `http://localhost:8000/api/ai-move/${model}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      data: requestBody
+    }
+    const axios = require('axios').default
 
+    axios.request(config)
+    .then((response:any) => {
+      handleClick(response.data.ai_move[0]
+    );
+    console.log(response.data.ai_move[0])
+  })
+  .catch((error: any) => {
+    console.log(error)
+  });
+  }
 
+  switch(gameMode) {
+    case "local":
+      break;
+    case "ai-first":
+      if (!xIsNext) {
+        get_ai_move(squares, "minmax")
+      };
+      break;
+    case "ai-second":
+      if (xIsNext) {
+        get_ai_move(squares, "minmax")
+      };
+      break;
+    case "random-first":
+      if (!xIsNext) {
+        get_ai_move(squares, "random")
+      };
+      break;
+    case "random-second":
+      if (xIsNext) {
+        get_ai_move(squares, "random")
+      };
+      break;
+  }
 
   const winner = calculateWinner(squares)
   let status: string;
@@ -39,10 +84,11 @@ export default function Board({
   } else {
     status = `Next player: ${xIsNext ? "X": "O"}`;
   }
-
+  
+  
   return (
     <>
-    <div className="flex-row flex-wrap justify-stretch w-1/4 aspect-square border border-black">
+    <div className="flex-row flex-wrap justify-stretch w-1/4 aspect-square border border-black dark:border-white">
       <div className="flex flex-row items-stretch justify-evenly h-1/3">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
