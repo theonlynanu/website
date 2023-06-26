@@ -35,11 +35,11 @@ export default function Game() {
         Reset
         </button>
         
-        <p>Game Mode: {gameMode}</p>
+        <p className="capitalize">Current mode: <strong>{gameMode}</strong></p>
 
         <form className="p-4">
             <label>
-            Game mode:
+            Select game mode:
             <select 
             name="selectedGameMode" 
             defaultValue="local"
