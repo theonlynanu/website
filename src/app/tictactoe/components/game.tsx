@@ -1,6 +1,6 @@
 'use client'
 
-import Board from "../components/board"
+import Board from "./board"
 import { useState } from 'react';
 
 declare global {
