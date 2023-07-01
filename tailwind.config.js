@@ -9,4 +9,12 @@ module.exports = {
     require('@tailwindcss/typography')
   ],
   darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'russian-violet': '#0D0630',
+        'tiffany-blue': "#AFCCC2",
+      }
+    }
+  }
 }
