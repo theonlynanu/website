@@ -49,8 +49,8 @@ export default function NavBar() {
 
     return (
         <motion.nav
-            className={clsx('fixed top-0 z-10 flex h-20 w-11/12 items-center  justify-between px-8 font-title text-3xl lg:px-24 lg:text-2xl rounded-full',
-            atPageStart ? "bg-transparent border-none" : "bg-inherit dark:bg-inherit border",
+            className={clsx('fixed top-0 z-10 flex h-20 w-11/12 items-center justify-between px-8 font-title text-3xl lg:px-24 lg:text-2xl rounded-full',
+            atPageStart ? "bg-transparent border-none" : "bg-inherit dark:bg-inherit border border-black dark:border-white",
             scrollingUp ? "visible" : "hidden"
             )}
             animate={[
