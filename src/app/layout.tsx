@@ -2,7 +2,6 @@ import './globals.css'
 import { inter } from '../fonts'
 import { Metadata } from 'next'
 import Providers from './Provider'
-import Header from './components/Header'
 import Footer from './components/Footer'
 import NavBar from './components/navbar'
 

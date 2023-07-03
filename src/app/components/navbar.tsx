@@ -2,13 +2,15 @@
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { clsx } from 'clsx'
 import { ReactNode } from '@mdx-js/react/lib'
-import { useState } from 'react' 
+import { useEffect, useState } from 'react' 
 import DarkModeBtn from './DarkModeBtn'
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
+
 
 function Logo() {
     return (
         <div className='flex w-fit items-center justify-center gap-2'>
-            <h1>Danyal Ahmed</h1>
+            <h1 className="text-4xl">Danyal Ahmed</h1>
         </div>
     )
 }
@@ -34,7 +36,7 @@ function NavLinks({inverted}: {inverted: boolean}) {
     )
 }
 
-export default function NavBar() {
+function NavBarDesktop() {
     const {scrollYProgress} = useScroll();
     const [atPageStart, setAtPageStart] = useState(true);
     const [scrollingUp, setScrollingUp] = useState(true);
@@ -49,8 +51,8 @@ export default function NavBar() {
 
     return (
         <motion.nav
-            className={clsx('fixed top-0 z-10 flex h-20 w-11/12 items-center justify-between px-8 font-title text-3xl lg:px-24 lg:text-2xl rounded-full',
-            atPageStart ? "bg-transparent border-none" : "bg-inherit dark:bg-inherit border border-black dark:border-white",
+            className={clsx('fixed top-0 z-10 flex w-full h-20 navbar-class items-center justify-between px-8 font-title text-3xl lg:px-24 lg:text-2xl',
+            atPageStart ? "bg-transparent border-none" : "bg-inherit dark:bg-inherit border-b-2 border-black dark:border-white",
             scrollingUp ? "visible" : "hidden"
             )}
             animate={[
@@ -62,4 +64,48 @@ export default function NavBar() {
             <NavLinks inverted={!atPageStart}/>
         </motion.nav>
     )
+}
+
+function NavBarMobile() {
+    const [open, setOpen] = useState(false);
+    const toggleOpen = () => setOpen((o) => !o);
+
+    return (
+        <motion.nav className="fixed top-0 z-10 flex w-full flex-col items-center justify-start font-title text-3xl">
+            <div className="flex h-20 w-full items-center justify-between bg-white px-8 shadow">
+                <Logo />
+                <button onClick={toggleOpen}>
+                    {open ? <ChevronUpIcon className='h-12'/> : <ChevronDownIcon className='h-12'/>}
+                </button>
+            </div>
+
+                {open && (
+                    <motion.div>
+                        <NavLinks inverted={false}/>
+                    </motion.div>
+                )}
+        </motion.nav>
+    )
+
+}
+
+export default function NavBar() {
+    const [width, setWidth] = useState<number>(window.innerWidth);
+    const handleWindowSizeChange = () => {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange)
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+    const isMobile = width <= 768;
+
+    if (isMobile) {
+        return <NavBarMobile />
+    }
+    return <NavBarDesktop />
 }
