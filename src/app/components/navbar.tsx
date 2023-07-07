@@ -1,92 +1,57 @@
 'use client'
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
-import { clsx } from 'clsx'
+import { motion } from 'framer-motion'
 import { ReactNode } from '@mdx-js/react/lib'
 import { useEffect, useState } from 'react' 
 import DarkModeBtn from './DarkModeBtn'
-import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 
 
 function Logo() {
     return (
         <div className='flex w-fit items-center justify-center gap-2'>
-            <h1 className="text-4xl">Danyal Ahmed</h1>
+            <h1 className="text-xl sm:text-4xl">DA</h1>
         </div>
     )
 }
 
 function NavLink({href, children}: {href:string, children: ReactNode}) {
     return (
-        <a className='hover:bg-slate-200 dark:hover:bg-slate-900 rounded-full p-2' href={href}>{children}</a>
+        <a className='hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl'
+            href={href}
+        >
+            {children}
+        </a>
     )
 }
 
-function NavLinks({inverted}: {inverted: boolean}) {
+function FramerNav() {
+    const [isOpen, setIsOpen] = useState(true);
+
+    const variants = {
+        open: { opacity: 1, x: 0 },
+        closed: { opacity: 1, x: -2000 },
+    }
+
     return (
-        <motion.div
-            className={clsx(
-                'flex items-center gap-8 px-8 text-xl transition-all',
-                inverted ? 'text-primary' : 'text-black dark:text-white'
-            )}>
+        <div className='flex flex-row gap-1'>
+        <button className="fixed w-16 h-16 top-12 z-10 bg-standard-primary dark:bg-standard-darkprimary rounded-full border-2 border-standard-800 dark:border-standard-200 drop-shadow-xl" 
+            onClick={() => setIsOpen(isOpen => !isOpen)}
+        >
+            X
+        </button>
+        <motion.nav
+            animate={isOpen ? "open" : "closed"}
+            initial={{x: -2000}}
+            variants={variants}
+            className='fixed flex flex-row top-12 z-9 w-[95vw] max-w-[650px] justify-between last:justify-self-end items-center py-2 px-6 inset-x-0 mx-auto drop-shadow-xl bg-standard-300 dark:bg-standard-700 rounded-full'
+        >
+            <Logo />
             <NavLink href='/'>Home</NavLink>
             <NavLink href='/about'>About</NavLink>
             <NavLink href='/contact'>Contact</NavLink>
             <DarkModeBtn />
-        </motion.div>
-    )
-}
-
-function NavBarDesktop() {
-    const {scrollYProgress} = useScroll();
-    const [atPageStart, setAtPageStart] = useState(true);
-    const [scrollingUp, setScrollingUp] = useState(true);
-
-    useMotionValueEvent(scrollYProgress, 'change', (v) => {
-        setAtPageStart(v < 0.001);
-        setScrollingUp(v < 0.15 || v == 1);
-        if (scrollYProgress.getVelocity() < 0) {
-            setScrollingUp(true);
-        }
-    });
-
-    return (
-        <motion.nav
-            className={clsx('fixed top-0 z-10 flex w-full h-20 navbar-class items-center justify-between px-8 font-title text-3xl lg:px-24 lg:text-2xl',
-            atPageStart ? "bg-transparent border-none" : "bg-inherit dark:bg-inherit border-b-2 border-black dark:border-white",
-            scrollingUp ? "visible" : "hidden"
-            )}
-            animate={[
-                atPageStart ? 'solid' : 'transparent',
-                scrollingUp ? 'show' : "hidden",
-            ]}
-            layout>
-            <Logo/>
-            <NavLinks inverted={!atPageStart}/>
         </motion.nav>
+        </div>
     )
-}
-
-function NavBarMobile() {
-    const [open, setOpen] = useState(false);
-    const toggleOpen = () => setOpen((o) => !o);
-
-    return (
-        <motion.nav className="fixed top-0 z-10 flex w-full flex-col items-center justify-start font-title text-3xl">
-            <div className="flex h-20 w-full items-center justify-between bg-white px-8 shadow">
-                <Logo />
-                <button onClick={toggleOpen}>
-                    {open ? <ChevronUpIcon className='h-12'/> : <ChevronDownIcon className='h-12'/>}
-                </button>
-            </div>
-
-                {open && (
-                    <motion.div>
-                        <NavLinks inverted={false}/>
-                    </motion.div>
-                )}
-        </motion.nav>
-    )
-
 }
 
 export default function NavBar() {
@@ -94,18 +59,18 @@ export default function NavBar() {
     const handleWindowSizeChange = () => {
         setWidth(window.innerWidth);
     }
-
+    
     useEffect(() => {
         window.addEventListener('resize', handleWindowSizeChange)
         return () => {
             window.removeEventListener('resize', handleWindowSizeChange);
         }
     }, []);
-
+    
     const isMobile = width <= 768;
-
-    if (isMobile) {
-        return <NavBarMobile />
-    }
-    return <NavBarDesktop />
+    
+    // if (isMobile) {
+        //     return <NavBarMobile />
+        // }
+        return <FramerNav />
 }

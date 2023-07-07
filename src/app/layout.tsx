@@ -20,10 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='h-full scroll-smooth'>
-      <body className={inter.className + " bg-tiffany-blue dark:bg-russian-violet"}>
+      <body className={inter.className + " bg-standard-100 dark:bg-standard-900 text-standard-900 dark:text-standard-100"}>
         <Providers>
           <NavBar />
-          <main className='mt-20'>{children}</main>
+          <main className='mt-16 w-full'>{children}</main>
           <Footer />
         </Providers>
       </body>
