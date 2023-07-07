@@ -26,8 +26,10 @@ module.exports = {
           darkprimary: "#2CDA9D",
           confirm: "#008F56",
           darkconfirm: "#00CC7A",
-          warn: "#E09600",
-          darkwarn: "#FFC247"
+          warn: "#CC8800",
+          darkwarn: "#FFC247",
+          delete: "#D11046",
+          darkdelete: "#EE1B57",
         },
       }
     }
