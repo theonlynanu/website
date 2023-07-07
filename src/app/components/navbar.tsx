@@ -55,22 +55,5 @@ function FramerNav() {
 }
 
 export default function NavBar() {
-    const [width, setWidth] = useState<number>(window.innerWidth);
-    const handleWindowSizeChange = () => {
-        setWidth(window.innerWidth);
-    }
-    
-    useEffect(() => {
-        window.addEventListener('resize', handleWindowSizeChange)
-        return () => {
-            window.removeEventListener('resize', handleWindowSizeChange);
-        }
-    }, []);
-    
-    const isMobile = width <= 768;
-    
-    // if (isMobile) {
-        //     return <NavBarMobile />
-        // }
         return <FramerNav />
 }
