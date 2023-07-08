@@ -43,6 +43,7 @@ const DarkModeBtn = () => {
                 !isThemeLight ? "justify-end bg-standard-400": "justify-start bg-standard-200")} 
                 onClick={toggleSwitch}
                 whileHover="hover"
+                onTap={toggleSwitch}
                 whileTap="tap"
                 animate='rest'
             >
