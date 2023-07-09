@@ -35,10 +35,17 @@ function FramerNav() {
             x: 0, 
             transition: {
                 type: "spring",
-                duration: 0.5,
+                duration: 0.8
             }
         },
-        closed: { opacity: 1, x: -1500 },
+        closed: { 
+            opacity: 1,
+            x: -1500,
+            transition: {
+                type: 'spring',
+                duration: 1.2
+            }
+        },
     }
 
     function handleToggle() {
