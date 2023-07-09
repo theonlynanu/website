@@ -11,15 +11,25 @@ const HamLine = (props: any) => (
     />
 )
 
+const mobileVariant = {
+    closed: {
+        y: -80
+    }
+}
+
 
 export default function NavToggle({toggleHandler}:{toggleHandler():void}) {
 const [isOpen, toggleOpen] = useCycle(true, false)
+const isMobile = (window.innerWidth <= 716)
+
 
     return (
-        <motion.div className="flex items-center shrink-0 w-16 h-16 z-10 bg-standard-primary dark:bg-standard-darkprimary rounded-full drop-shadow-lg cursor-pointer" 
+        <motion.div className="flex items-center shrink-0 top-2 mx-auto md:ml-8 w-16 h-16 z-10 bg-standard-primary dark:bg-standard-darkprimary rounded-full drop-shadow-lg cursor-pointer" 
         onClick={toggleHandler}  
         whileTap={{scale: 0.9, transition:{duration: 0.2}}}
-        whileHover={{scale: [null, 1.05], transition:{duration:0.2}}}      
+        whileHover={{scale: [null, 1.05], transition:{duration:0.2}}}    
+        animate={isOpen ? 'open' : 'closed'}
+        variants={isMobile ? mobileVariant : {}}  
     >
         <motion.svg
             width='80'
@@ -33,7 +43,7 @@ const [isOpen, toggleOpen] = useCycle(true, false)
                 variants={{
                     closed: {
                         opacity: 1,
-                        d: 'M28 22 L52 22'},
+                        d: 'M28 22 L52 22',},
                     open: {
                         opacity: 1,
                         d: 'M33 40 L47 25',
