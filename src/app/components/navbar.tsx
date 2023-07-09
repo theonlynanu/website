@@ -45,6 +45,7 @@ function FramerNav() {
         setIsOpen(!isOpen)
     }
 
+    // TODO - once other pages are present, add an animated background to indicate current page in Navbar.
     return (
         <motion.nav className='flex flex-row gap-1 fixed mx-24 inset-x-0 justify-start top-12'>
             <NavToggle toggleHandler={handleToggle}/>
