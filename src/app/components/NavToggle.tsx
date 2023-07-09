@@ -1,4 +1,6 @@
 import { motion, useCycle } from "framer-motion"
+import {useEffect} from 'react'
+import useWindowDimensions from "./useWindowDimension"
 
 // TODO - Better handle props typing for additional reactive animation
 const HamLine = (props: any) => (
@@ -20,7 +22,10 @@ const mobileVariant = {
 
 export default function NavToggle({toggleHandler}:{toggleHandler():void}) {
 const [isOpen, toggleOpen] = useCycle(true, false)
-const isMobile = (window.innerWidth <= 716)
+
+const { width, height } = useWindowDimensions();
+
+const isMobile = (width ? width <= 734 : true)
 
 
     return (
