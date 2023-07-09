@@ -28,17 +28,23 @@ function NavLink({href, children}: {href:string, children: ReactNode}) {
 function FramerNav() {
     const [isOpen, setIsOpen] = useState(true);
 
-    // TODO - implement null keyframing to reduce lag if the menu toggle is rapidly triggered
     const variants = {
         open: { 
             opacity: 1, 
-            x: 0, 
+            x: [null, 0], 
             transition: {
                 type: "spring",
                 duration: 0.5,
             }
         },
-        closed: { opacity: 1, x: -1500 },
+        closed: {
+            opacity: 1, 
+            x: [null, -1500],
+            transition: {
+                type: 'spring',
+                duration: 0.5
+            }
+        },
     }
 
     function handleToggle() {
