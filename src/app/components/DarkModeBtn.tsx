@@ -38,26 +38,23 @@ const DarkModeBtn = () => {
     }
 
     return (
-        <div>
-            <motion.div className={clsx("w-16 h-10 flex rounded-full p-2 cursor-pointer",
-                !isThemeLight ? "justify-end bg-standard-400": "justify-start bg-standard-200")} 
-                onClick={toggleSwitch}
-                whileHover="hover"
-                onTap={toggleSwitch}
-                whileTap="tap"
-                animate='rest'
-            >
-                <motion.div className={
-                    clsx("w-6 h-6 rounded-full", 
-                    isThemeLight ? "bg-standard-900" : "bg-standard-100")} 
-                    layout 
-                    transition={spring} 
-                    // whileHover={{scale:[null, 1.1], transition: {duration: .3}}} 
-                    // whileTap={{scale: 0.9}} 
-                    variants={switchVariants}
-                />
-            </motion.div>
-        </div>
+        <motion.div className={clsx("w-16 h-10 flex rounded-full p-2 cursor-pointer",
+            !isThemeLight ? "justify-end bg-standard-400": "justify-start bg-standard-200")} 
+            onClick={toggleSwitch}
+            whileHover="hover"
+            onTap={toggleSwitch}
+            whileTap="tap"
+            animate='rest'
+        >
+            <motion.div className={
+                clsx("w-6 h-6 rounded-full", 
+                isThemeLight ? "bg-standard-900" : "bg-standard-100")} 
+                layout 
+                transition={spring} 
+                variants={switchVariants}
+            />
+        </motion.div>
+
     )
 }
 
