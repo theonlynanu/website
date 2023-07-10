@@ -28,7 +28,9 @@ function NavLink({href, children}: {href:string, children: ReactNode}) {
 function FramerNav() {
     const [isOpen, setIsOpen] = useState(true);
 
-    // TODO - implement null keyframing to reduce lag if the menu toggle is rapidly triggered
+    // TODO - Implement null keyframing to reduce lag if the menu toggle is rapidly triggered-
+    // TODO - for some reason, using keyframes in variants is throwing a type error and not properly
+    // TODO - keying out the animation. Not sure if bug or misunderstanding on my part.
     const variants = {
         open: { 
             x: 0, 
