@@ -31,19 +31,19 @@ function FramerNav() {
     // TODO - implement null keyframing to reduce lag if the menu toggle is rapidly triggered
     const variants = {
         open: { 
-            opacity: 1, 
             x: 0, 
+            opacity: 1,
             transition: {
                 type: "spring",
-                duration: 0.8
+                duration: 1
             }
         },
         closed: { 
-            opacity: 1,
             x: -1500,
+            opacity: 0,
             transition: {
                 type: 'spring',
-                duration: 1.2
+                duration: 0.6
             }
         },
     }
