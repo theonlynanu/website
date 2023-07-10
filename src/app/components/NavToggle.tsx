@@ -1,5 +1,4 @@
 import { motion, useCycle } from "framer-motion"
-import {useEffect} from 'react'
 import useWindowDimensions from "./useWindowDimension"
 
 // TODO - Better handle props typing for additional reactive animation
@@ -15,7 +14,10 @@ const HamLine = (props: any) => (
 
 const mobileVariant = {
     closed: {
-        y: -80
+        y: -80,
+    },
+    open: {
+        scale: 0.8
     }
 }
 
@@ -34,7 +36,7 @@ const isMobile = (width ? width <= 734 : true)
         whileTap={{scale: 0.9, transition:{duration: 0.2}}}
         whileHover={{scale: [null, 1.05], transition:{duration:0.2}}}    
         animate={isOpen ? 'open' : 'closed'}
-        variants={isMobile ? mobileVariant : {}}  
+        variants={isMobile ? mobileVariant : {open: {scale:0.8}}}  
     >
         <motion.svg
             width='80'
