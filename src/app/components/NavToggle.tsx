@@ -55,7 +55,7 @@ const isMobile = (width ? width <= 734 : true)
                         strokeWidth: 3,
                     }
                 }}
-                transition={{duration: 0.5}}
+                transition={{duration: 0.6}}
             />
             <HamLine 
                 variants={{
@@ -78,7 +78,7 @@ const isMobile = (width ? width <= 734 : true)
                         strokeWidth: 3
                     }
                 }}
-                tranistion={{duration: 0.5}}
+                transition={{duration: 0.6}}
             />
         </motion.svg>
 
