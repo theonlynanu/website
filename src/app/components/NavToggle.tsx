@@ -65,8 +65,12 @@ const isMobile = (width ? width <= 734 : true)
                         opacity: 1,
                         d: 'M28 32 L52 32'
                     },
-                    open: {opacity: 0}
+                    open: {
+                        opacity: 0,
+                        x: -20
+                    }
                 }}
+                transition={{duration: 0.5}}
                 />
             <HamLine 
                 variants={{
