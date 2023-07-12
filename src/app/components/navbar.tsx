@@ -1,10 +1,14 @@
 'use client'
 import { motion } from 'framer-motion'
 import { ReactNode } from '@mdx-js/react/lib'
-import { useState } from 'react' 
+import { useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation' 
+import {} from 'react-icons'
+import {clsx} from 'clsx'
+
 import DarkModeBtn from './DarkModeBtn'
 import NavToggle from './NavToggle'
-import {} from 'react-icons'
 
 
 function Logo() {
@@ -16,12 +20,14 @@ function Logo() {
 }
 
 function NavLink({href, children}: {href:string, children: ReactNode}) {
+    const currentRoute = usePathname() 
     return (
-        <a className='hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl'
+        <Link className={clsx('hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl',
+            currentRoute === href ? 'border border-1 border-standard-800 dark:border-standard-300' : '')}
             href={href}
         >
             {children}
-        </a>
+        </Link>
     )
 }
 
