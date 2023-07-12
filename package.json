@@ -20,6 +20,7 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
+    "contentlayer": "^0.3.4",
     "eslint": "8.41.0",
     "eslint-config-next": "^13.4.9",
     "framer-motion": "^10.12.17",
