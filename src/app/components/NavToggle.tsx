@@ -67,7 +67,7 @@ const isMobile = (width ? width <= 734 : true)
                     },
                     open: {
                         opacity: 0,
-                        x: -20
+                        x: -40
                     }
                 }}
                 transition={{duration: 0.5}}
