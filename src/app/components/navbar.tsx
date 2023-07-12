@@ -4,7 +4,7 @@ import { ReactNode } from '@mdx-js/react/lib'
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' 
-import {} from 'react-icons'
+import { BsGithub } from 'react-icons/bs'
 import {clsx} from 'clsx'
 
 import DarkModeBtn from './DarkModeBtn'
@@ -73,7 +73,7 @@ function FramerNav() {
                 <Logo />
                 <NavLink href='/'>Home</NavLink>
                 <NavLink href='/about'>About</NavLink>
-                <NavLink href='/contact'>Contact</NavLink>
+                <a className='hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl' href='https://github.com/theonlynanu' target='_blank'><BsGithub size={'1.5rem'}/></a>
                 <DarkModeBtn />
             </motion.nav>
         </motion.nav>
