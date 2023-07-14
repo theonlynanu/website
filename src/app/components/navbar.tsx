@@ -13,9 +13,7 @@ import NavToggle from './NavToggle'
 
 function Logo() {
     return (
-        <div className='flex w-fit items-center justify-center gap-2'>
-            <h1 className="text-xl sm:text-4xl">DA</h1>
-        </div>
+        <motion.img src='/profile.png' className='cursor-pointer flex w-fit items-center justify-center gap h-8 rounded-full outline outline-2 outline-standard-500 ring-2 ring-offset-1 ring-standard-400' />
     )
 }
 
@@ -23,7 +21,7 @@ function NavLink({href, children}: {href:string, children: ReactNode}) {
     const currentRoute = usePathname() 
     return (
         <Link className={clsx('hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl',
-            currentRoute === href ? 'border border-1 border-standard-800 dark:border-standard-300' : '')}
+            currentRoute === href ? 'border-2 border-standard-800 dark:border-standard-300' : '')}
             href={href}
         >
             {children}

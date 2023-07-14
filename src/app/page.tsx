@@ -1,10 +1,8 @@
-import HelloWorld from "./test.mdx"
 
 export default function Index() {
 
   return (
     <div>
-      <HelloWorld />
       <button className='bg-standard-primary dark:bg-standard-darkprimary text-standard-900 rounded-full p-1 h-20 w-20 text-4xl mx-2'>+</button><button className="bg-standard-300 w-20 h-20 rounded-full text-4xl text-standard-900">+</button>
       <p className="text-xl text-standard-confirm dark:text-standard-darkconfirm">Entry updated!</p>
       <p className="text-xl text-standard-warn dark:text-standard-darkwarn">This could break something.</p>
