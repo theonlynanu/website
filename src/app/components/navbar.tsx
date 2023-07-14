@@ -3,17 +3,20 @@ import { motion } from 'framer-motion'
 import { ReactNode } from '@mdx-js/react/lib'
 import { useState } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation' 
+import { usePathname, useRouter } from 'next/navigation' 
 import { BsGithub } from 'react-icons/bs'
 import {clsx} from 'clsx'
-
 import DarkModeBtn from './DarkModeBtn'
 import NavToggle from './NavToggle'
 
 
 function Logo() {
+    const router = useRouter()
     return (
-        <motion.img src='/profile.png' className='cursor-pointer flex w-fit items-center justify-center gap h-8 rounded-full outline outline-2 outline-standard-500 ring-2 ring-offset-1 ring-standard-400' />
+            <motion.img src='/profile.png' className='cursor-pointer flex w-fit items-center justify-center gap h-8 rounded-full outline outline-2 ring-2 ring-offset-1 outline-standard-500 ring-standard-400 hover:ring-offset-2 hover:outline-offset-4' 
+                onClick={() => router.push('/')}
+                whileHover={{scale: 1.1}}
+            />
     )
 }
 
@@ -21,7 +24,7 @@ function NavLink({href, children}: {href:string, children: ReactNode}) {
     const currentRoute = usePathname() 
     return (
         <Link className={clsx('hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl',
-            currentRoute === href ? 'border-2 border-standard-800 dark:border-standard-300' : '')}
+            currentRoute === href ? 'underline decoration-standard-800 dark:decoration-standard-300' : '')}
             href={href}
         >
             {children}
@@ -60,7 +63,7 @@ function FramerNav() {
 
     // TODO - once other pages are present, add an animated background to indicate current page in Navbar.
     return (
-        <motion.nav className='flex flex-row gap-1 fixed inset-x-0 justify-start top-12 flex-wrap-reverse px-0 mx-2'>
+        <motion.nav className='flex flex-row gap-1 fixed inset-x-0 justify-start top-8 flex-wrap-reverse px-0 mx-2'>
             <NavToggle toggleHandler={handleToggle}/>
             <motion.nav
                 animate={isOpen ? "open" : "closed"}
