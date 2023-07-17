@@ -9,3 +9,25 @@ body {
   font-family: sans-serif;
   margin: 20px;
 }
+
+*::-webkit-scrollbar, *::-webkit-scrollbar:horizontal {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track, *::-webkit-scrollbar-track:horizontal {
+  background: #D3CEC4;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #A39E93;
+  border-radius: 14px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #857F72;
+}
+
+*::-webkit-scrollbar-corner {
+  background-color: #D3CEC4
+}

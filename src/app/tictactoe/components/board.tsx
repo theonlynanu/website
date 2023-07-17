@@ -87,8 +87,8 @@ export default function Board({
   
   
   return (
-    <>
-    <div className="flex-row flex-wrap justify-stretch w-1/4 aspect-square border border-black dark:border-white">
+    <div className="flex flex-col  self-center">
+    <div className="flex-row flex-wrap justify-stretch w-auto max-w-lg aspect-square border border-standard-900 dark:border-standard-100">
       <div className="flex flex-row items-stretch justify-evenly h-1/3">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -105,10 +105,10 @@ export default function Board({
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
     </div>
-    <div className="">
+    <div className="w-fit">
       {status}
     </div>
-    </>
+    </div>
   )
 }
 

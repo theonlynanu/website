@@ -1,6 +1,6 @@
 'use client'
 
-import Board from "../components/board"
+import Board from "./board"
 import { useState } from 'react';
 
 declare global {
@@ -26,8 +26,8 @@ export default function Game() {
       }
 
   return (
-    <>
-    <div className="flex flex-row items-center">
+    <div className="">
+    <div className="flex flex-row items-center w-fit">
         <button 
         className=" bg-white hover:bg-gray-200 text-gray-800 font-bold border py-1 px-2 m-2 border-gray-400 rounded shadow" 
         onClick={reset}
@@ -57,9 +57,9 @@ export default function Game() {
         </form>
     </div>
 
-    <div> 
+    <div className=""> 
         <Board squares={currentBoard} xIsNext = {xIsNext} onPlay={handlePlay} gameMode={gameMode}/>
     </div>
-    </>
+    </div>
   )
 }

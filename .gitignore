@@ -24,6 +24,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# contentlayer generations
+.contentlayer
+
 # local env files
 .env*.local
 *.env
