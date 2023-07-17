@@ -13,7 +13,7 @@ import NavToggle from './NavToggle'
 function Logo() {
     const router = useRouter()
     return (
-            <motion.img src='/profile.png' className='cursor-pointer flex w-fit shrink-0 grow-0 items-center justify-center gap h-8 rounded-full outline outline-2 ring-2 ring-offset-1 outline-standard-500 ring-standard-400 hover:ring-offset-2 hover:outline-offset-4' 
+            <motion.img src='/profile.png' className='cursor-pointer flex w-8 shrink-0 grow-0 items-center justify-center gap h-8 rounded-full outline outline-2 ring-2 ring-offset-1 outline-standard-500 ring-standard-400 hover:ring-offset-2 hover:outline-offset-4' 
                 onClick={() => router.push('/')}
                 whileHover={{scale: 1.1}}
             />
