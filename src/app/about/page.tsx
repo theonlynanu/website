@@ -1,4 +1,10 @@
+import { Metadata } from 'next'
 import TestButton from './components/TestButton'
+
+export const metadata: Metadata = {
+  title: 'About | Danyal Ahmed'
+}
+
 export default function AboutPage() {
 
   return (

@@ -6,10 +6,7 @@ import Footer from './components/Footer'
 import NavBar from './components/navbar'
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Danyal Ahmed',
-    template: '%s | Danyal Ahmed'
-  },
+  title: 'Danyal Ahmed',
   description: 'Web dev and software engineer',
 }
 
