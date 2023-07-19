@@ -9,7 +9,7 @@ export default function AboutPage() {
 
   return (
     <div>
-      <h1 className='text-4xl mb-4'>Palette Test Page</h1>
+      <h1 className='text-4xl mb-4'>Palette and UI Test Page</h1>
       <p>Check out the changes in dark mode!</p>
       <br />
       <figure className='my-8'>
