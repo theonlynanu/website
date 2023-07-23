@@ -74,7 +74,7 @@ function FramerNav() {
                 <Logo />
                 <NavLink href='/'>Home</NavLink>
                 <NavLink href='/about'>About</NavLink>
-                <a className='hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl' href='https://github.com/theonlynanu/personal-site' target='_blank'><BsGithub size={'1.5rem'}/></a>
+                <a className='hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl' href='https://github.com/theonlynanu/website' target='_blank'><BsGithub size={'1.5rem'}/></a>
                 <DarkModeBtn />
             </motion.nav>
         </motion.nav>
