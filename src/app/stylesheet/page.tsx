@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import TestButton from './components/TestButton'
+import PopIn from '../utils/popIn'
 
 export const metadata: Metadata = {
   title: 'About | Danyal Ahmed'
@@ -22,8 +23,10 @@ export default function AboutPage() {
       </figure>
       <div className='flex flex-row justify-evenly my-8'>
         <div>
-        <TestButton />
-        <div className='text-sm'>Toggle button with animations</div>
+        <PopIn>
+          <TestButton />
+          <div className='text-sm'>Toggle button with animations</div>
+        </PopIn>
         </div>
         <br />
         <div>
