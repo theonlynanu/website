@@ -1,9 +1,9 @@
-import Timeline from "./components/timeline"
+import Timeline from "./components/timeline";
 
 export default function About() {
-    return (
-        <>
-        <Timeline />
-        </>
-    )
+  return (
+    <>
+      <Timeline />
+    </>
+  );
 }

@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "@heroicons/react": "^2.0.18",
-    "@types/react-vertical-timeline-component": "^3.3.3"
+    "@types/react-vertical-timeline-component": "^3.3.3",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1"
   }
 }
