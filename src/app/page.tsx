@@ -15,7 +15,7 @@ export default function Index() {
       <PopIn>
         <Link
           href="/tictactoe"
-          className="rounded-full bg-standard-primary dark:bg-standard-darkprimary py-2 px-4 my-6 text-standard-900 hover:border-2 hover:border-standard-900 dark:hover:border-standard-100 drop-shadow-lg"
+          className="my-6 rounded-full bg-standard-primary px-4 py-2 text-standard-900 drop-shadow-lg hover:border-2 hover:border-standard-900 dark:bg-standard-darkprimary dark:hover:border-standard-100"
         >
           Check out the tictactoe demo here!
         </Link>

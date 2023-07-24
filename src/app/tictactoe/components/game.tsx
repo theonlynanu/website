@@ -27,9 +27,9 @@ export default function Game() {
 
   return (
     <div className="">
-      <div className="flex flex-row items-center w-fit">
+      <div className="flex w-fit flex-row items-center">
         <button
-          className=" bg-white hover:bg-gray-200 text-gray-800 font-bold border py-1 px-2 m-2 border-gray-400 rounded shadow"
+          className=" m-2 rounded border border-gray-400 bg-white px-2 py-1 font-bold text-gray-800 shadow hover:bg-gray-200"
           onClick={reset}
         >
           Reset
@@ -49,7 +49,7 @@ export default function Game() {
                 setGameMode(e.target.value);
                 reset();
               }}
-              className="bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block rounded-lg border border-gray-200 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500"
             >
               <option value="local">Local</option>
               <option value="ai-first">AI - Move First</option>

@@ -20,7 +20,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " bg-standard-100 dark:bg-standard-900 text-standard-900 dark:text-standard-100"
+          " bg-standard-100 text-standard-900 dark:bg-standard-900 dark:text-standard-100"
         }
       >
         <Providers>

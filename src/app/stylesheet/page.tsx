@@ -9,20 +9,20 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div>
-      <h1 className="text-4xl mb-4">Palette and UI Test Page</h1>
+      <h1 className="mb-4 text-4xl">Palette and UI Test Page</h1>
       <p>Check out the changes in dark mode!</p>
       <br />
       <figure className="my-8">
-        <img className="w-2/3 mx-auto" src="/palette.jpg" />
-        <figcaption className="text-sm text-center">Main UI Palette</figcaption>
+        <img className="mx-auto w-2/3" src="/palette.jpg" />
+        <figcaption className="text-center text-sm">Main UI Palette</figcaption>
       </figure>
       <figure className="my-8">
-        <img className=" w-2/3 mx-auto" src="/InteractivePalettes.png" />
-        <figcaption className="text-sm text-center">
+        <img className=" mx-auto w-2/3" src="/InteractivePalettes.png" />
+        <figcaption className="text-center text-sm">
           Interactive Element Palette
         </figcaption>
       </figure>
-      <div className="flex flex-row justify-evenly my-8">
+      <div className="my-8 flex flex-row justify-evenly">
         <div>
           <PopIn>
             <TestButton />
@@ -42,7 +42,7 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
-      <p className="text-3xl dark:text-standard-100 text-standard-900">
+      <p className="text-3xl text-standard-900 dark:text-standard-100">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa veritatis
         consectetur at cumque quis cupiditate magnam aliquid, non mollitia, ea
         repellat perspiciatis quaerat assumenda amet officia tempore recusandae

@@ -34,7 +34,7 @@ export default function NavToggle({
 
   return (
     <motion.div
-      className="flex items-center shrink-0 top-2 mx-auto md:ml-8 w-16 h-16 z-10 bg-standard-primary dark:bg-standard-darkprimary rounded-full drop-shadow-lg cursor-pointer"
+      className="top-2 z-10 mx-auto flex h-16 w-16 shrink-0 cursor-pointer items-center rounded-full bg-standard-primary drop-shadow-lg dark:bg-standard-darkprimary md:ml-8"
       onClick={toggleHandler}
       whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
       whileHover={{ scale: [null, 1.05], transition: { duration: 0.2 } }}

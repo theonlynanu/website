@@ -14,7 +14,7 @@ function Logo() {
   return (
     <motion.img
       src="/profile.png"
-      className="cursor-pointer flex w-8 shrink-0 grow-0 items-center justify-center gap h-8 rounded-full outline outline-2 ring-2 ring-offset-1 outline-standard-500 ring-standard-400 hover:ring-offset-2 hover:outline-offset-4"
+      className="gap flex h-8 w-8 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2"
       onClick={() => router.push("/")}
       whileHover={{ scale: 1.1 }}
     />
@@ -26,10 +26,10 @@ function NavLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link
       className={clsx(
-        "hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl",
+        "text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl",
         currentRoute === href
           ? "underline decoration-standard-800 dark:decoration-standard-300"
-          : "",
+          : ""
       )}
       href={href}
     >
@@ -69,19 +69,19 @@ function FramerNav() {
 
   // TODO - once other pages are present, add an animated background to indicate current page in Navbar.
   return (
-    <motion.nav className="flex flex-row gap-1 fixed inset-x-0 justify-start top-8 flex-wrap-reverse px-0 mx-2">
+    <motion.nav className="fixed inset-x-0 top-8 mx-2 flex flex-row flex-wrap-reverse justify-start gap-1 px-0">
       <NavToggle toggleHandler={handleToggle} />
       <motion.nav
         animate={isOpen ? "open" : "closed"}
         initial={{ x: -1500 }}
         variants={variants}
-        className="flex flex-row justify-self-center z-9 w-[95vw] max-w-[650px] mx-auto min-[736px]:ml-0 justify-between last:justify-self-end items-center py-2 px-6 inset-x-0 drop-shadow-xl bg-standard-300 dark:bg-standard-700 rounded-full"
+        className="z-9 inset-x-0 mx-auto flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end dark:bg-standard-700 min-[736px]:ml-0"
       >
         <Logo />
         <NavLink href="/">Home</NavLink>
         <NavLink href="/about">About</NavLink>
         <a
-          className="hover:bg-standard-200 dark:hover:bg-standard-800 rounded-full py-2 px-3 text-md lg:text-xl"
+          className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
           href="https://github.com/theonlynanu/website"
           target="_blank"
         >
