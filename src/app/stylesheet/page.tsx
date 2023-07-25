@@ -23,24 +23,24 @@ export default function AboutPage() {
         </figcaption>
       </figure>
       <div className="my-8 flex flex-row justify-evenly">
-        <div>
-          <PopIn>
+        <PopIn className="flex justify-between sm:gap-[15vw]">
+          <div>
             <TestButton />
             <div className="text-sm">Toggle button with animations</div>
-          </PopIn>
-        </div>
-        <br />
-        <div>
-          <p className="text-xl text-standard-confirm dark:text-standard-darkconfirm">
-            Entry updated!
-          </p>
-          <p className="text-xl text-standard-warn dark:text-standard-darkwarn">
-            This could break something.
-          </p>
-          <p className="text-xl text-standard-delete dark:text-standard-darkdelete">
-            Entry removed.
-          </p>
-        </div>
+          </div>
+          <br />
+          <div>
+            <p className="text-xl text-standard-confirm dark:text-standard-darkconfirm">
+              Entry updated!
+            </p>
+            <p className="text-xl text-standard-warn dark:text-standard-darkwarn">
+              This could break something.
+            </p>
+            <p className="text-xl text-standard-delete dark:text-standard-darkdelete">
+              Entry removed.
+            </p>
+          </div>
+        </PopIn>
       </div>
       <p className="text-3xl text-standard-900 dark:text-standard-100">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa veritatis
