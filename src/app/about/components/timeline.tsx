@@ -71,7 +71,7 @@ export default function Timeline() {
             : { background: "#E8E6E1" };
 
         return (
-          <PopIn className="my-8 drop-shadow-lg" key={i}>
+          <PopIn className="my-8 drop-shadow-lg z-auto" key={i}>
             <VerticalTimelineElement
               key={i}
               // Tailwind classes outside of bg can be used here.
@@ -80,6 +80,7 @@ export default function Timeline() {
               date={t.date}
               {...t.icon}
               visible={true}
+              contentArrowStyle={{ borderRight: "8px solid #A39E93" }}
             >
               {t.title ? (
                 <React.Fragment>
