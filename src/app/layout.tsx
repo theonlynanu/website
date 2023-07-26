@@ -2,8 +2,8 @@ import "./globals.css";
 import { inter } from "../fonts";
 import { Metadata } from "next";
 import Providers from "./Provider";
-import Footer from "./components/Footer";
-import NavBar from "./components/navbar";
+import Footer from "./_components/Footer";
+import NavBar from "./_components/navbar";
 
 export const metadata: Metadata = {
   title: "Danyal Ahmed",

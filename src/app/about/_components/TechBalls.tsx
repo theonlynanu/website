@@ -1,6 +1,6 @@
 import BallCanvas from "./BallCanvas";
 import { technologies } from "../constants/technologies";
-import PopIn from "@/app/utils/popIn";
+import PopIn from "@/app/_utils/popIn";
 
 export default function TechBalls() {
   return (

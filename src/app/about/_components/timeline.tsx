@@ -7,7 +7,7 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { FaBeer } from "react-icons/fa";
-import PopIn from "@/app/utils/popIn";
+import PopIn from "@/app/_utils/popIn";
 import { useTheme } from "next-themes";
 
 export default function Timeline() {

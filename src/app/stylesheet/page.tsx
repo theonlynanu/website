@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import TestButton from "./components/TestButton";
-import PopIn from "../utils/popIn";
+import TestButton from "./_components/TestButton";
+import PopIn from "../_utils/popIn";
 
 export const metadata: Metadata = {
   title: "About | Danyal Ahmed",

@@ -1,4 +1,4 @@
-import Game from "./components/game";
+import Game from "./_components/game";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PopIn from "./utils/popIn";
+import PopIn from "./_utils/popIn";
 
 export default function Index() {
   return (
