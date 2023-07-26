@@ -1,29 +1,42 @@
+"use client";
 import Link from "next/link";
 import PopIn from "./_utils/popIn";
+import { useState, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+
+function Box(props) {
+  // This reference will give us direct access to the mesh
+  const meshRef = useRef();
+  // Set up state for the hovered and active state
+  const [hovered, setHover] = useState(false);
+  const [ac tive, setActive] = useState(false);
+  // Subscribe this component to the render-loop, rotate the mesh every frame
+  useFrame((state, delta) => {
+    meshRef.current.rotation.x += delta;
+    meshRef.current.rotation.y += 0.5 * delta;
+  });
+  // Return view, these are regular three.js elements expressed in JSX
+  return (
+    <mesh
+      {...props}
+      ref={meshRef}
+      scale={active ? 1.5 : 1}
+      onClick={(event) => setActive(!active)}
+      onPointerOver={(event) => setHover(true)}
+      onPointerOut={(event) => setHover(false)}
+    >
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+    </mesh>
+  );
+}
 
 export default function Index() {
   return (
-    <div>
-      {
-        // TODO - Framer Motion components will need to be externalized
-      }
-      <div>
-        This site is under construction, feel free to check out the preview
-        branch of this project on my Github!
-      </div>
-      <br />
-      <PopIn>
-        <Link
-          href="/tictactoe"
-          className="my-6 rounded-full bg-standard-primary px-4 py-2 text-standard-900 drop-shadow-lg hover:border-2 hover:border-standard-900 dark:bg-standard-darkprimary dark:hover:border-standard-100"
-        >
-          Check out the tictactoe demo here!
-        </Link>
-      </PopIn>
-      {
-        // TODO - Add link to palette page
-      }
-      {/* <motion.img className='h-24 w-24' src='/profile.png' initial={{y:200}}whileInView={{y: 0}}/> */}
-    </div>
+    <Canvas className="border border-black rounded-full bg-standard-900">
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
+      <Box position={[0, 0, 2.5]} />
+    </Canvas>
   );
 }
