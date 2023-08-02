@@ -82,7 +82,7 @@ function FramerNav() {
         <NavLink href="/about">About</NavLink>
         <a
           className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
-          href="https://github.com/theonlynanu/website"
+          href="https://github.com/theonlynanu/personal-site"
           target="_blank"
         >
           <BsGithub size={"1.5rem"} />
