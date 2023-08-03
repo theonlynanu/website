@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { Canvas, MeshProps, useFrame } from "@react-three/fiber";
-import { Mesh } from "three";
+import { BoxGeometry, Mesh } from "three";
 import { Flex, Box, useFlexSize } from "@react-three/flex";
 import { Float, OrbitControls } from "@react-three/drei";
 
@@ -13,7 +13,9 @@ function Cube(props: MeshProps) {
   const [active, setActive] = useState(false);
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => {
-    meshRef.current.rotation.y += delta;
+    meshRef.current.rotation.y += 0.5 * delta;
+    meshRef.current.position.x += delta;
+    meshRef.current.position.y += 0.4 * delta;
   });
   // Return view, these are regular three.js elements expressed in JSX
   return (
@@ -23,7 +25,8 @@ function Cube(props: MeshProps) {
       onClick={() => setActive(!active)}
       onPointerOver={() => setHover(true)}
       onPointerOut={() => setHover(false)}
-      rotation={[0.7, 0.3, 0.7]}
+      rotation={[0.7, 0.3, 1.2]}
+      scale={5}
     >
       <boxGeometry args={[1, 1, 1]} />
       <meshStandardMaterial color={hovered ? "#D3CEC4" : "#857F72"} />
@@ -45,21 +48,16 @@ function Cone(props: MeshProps) {
 
 export default function Hero() {
   return (
-    <div className="flex flex-shrink flex-col mx-auto justify-center gap-4 ">
-      <div className="w-fit">
-        <Canvas className="border ">
-          <ambientLight intensity={0.2} />
-          <pointLight position={[0, 4, 3]} />
-          <Cube scale={3} />
-        </Canvas>
-      </div>
-      <div className="self-end">
-        <Canvas className="border ">
-          <ambientLight intensity={0.4} />
-          <pointLight position={[0, 2, 2]} />
-          <Cone />
-        </Canvas>
-      </div>
+    <div className="border border-red-700 h-96">
+      <Canvas
+        className="border border-black"
+        camera={{ position: [0, 0, 10], zoom: 30 }}
+        orthographic
+      >
+        <ambientLight intensity={0.3} />
+        <pointLight position={[0, 1, 6]} />
+        <Cube />
+      </Canvas>
     </div>
   );
 }
