@@ -1,9 +1,9 @@
 "use client";
 import { useState, useRef } from "react";
 import { Canvas, MeshProps, useFrame } from "@react-three/fiber";
-import { BoxGeometry, Mesh } from "three";
-import { Flex, Box, useFlexSize } from "@react-three/flex";
-import { Float, OrbitControls } from "@react-three/drei";
+import { Mesh } from "three";
+import { Float } from "@react-three/drei";
+import useWindowDimensions from "../_utils/useWindowDimension";
 
 function Cube(props: MeshProps) {
   // This reference will give us direct access to the mesh
@@ -11,13 +11,20 @@ function Cube(props: MeshProps) {
   // Set up state for the hovered and active state
   const [hovered, setHover] = useState(false);
   const [active, setActive] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
+  // Subscribe this component to the render-loop, rotate and translate the mesh every frame,
+  // and allow user to reverse the movement by click/touch
   useFrame((state, delta) => {
-    meshRef.current.rotation.y += 0.5 * delta;
-    meshRef.current.position.x += delta;
-    meshRef.current.position.y += 0.4 * delta;
+    if (!active) {
+      meshRef.current.rotation.y += 0.5 * delta;
+      meshRef.current.position.x += delta;
+      meshRef.current.position.y += 0.4 * delta;
+    } else {
+      meshRef.current.rotation.y -= 0.5 * delta;
+      meshRef.current.position.x -= delta;
+      meshRef.current.position.y -= 0.4 * delta;
+    }
   });
-  // Return view, these are regular three.js elements expressed in JSX
+
   return (
     <mesh
       {...props}
@@ -29,34 +36,60 @@ function Cube(props: MeshProps) {
       scale={5}
     >
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "#D3CEC4" : "#857F72"} />
+      <meshStandardMaterial
+        color={
+          active
+            ? hovered
+              ? "#B8B2A7"
+              : "#504A40"
+            : hovered
+            ? "#B8B2A7"
+            : "#857F72"
+        }
+      />
     </mesh>
   );
 }
 
-function Cone(props: MeshProps) {
+function Loop(props: MeshProps) {
   const meshRef = useRef<Mesh>(null!);
+
   return (
-    <Float floatingRange={[-0.5, 1]} rotationIntensity={3} speed={3}>
-      <mesh {...props} ref={meshRef} rotation={[0.3, -2, 0.4]}>
-        <coneGeometry args={[1.5, 4]} />
-        <meshStandardMaterial color={"green"} />
+    <>
+      <Float floatingRange={[-0.5, 0.3]} rotationIntensity={3} speed={3}>
+        <mesh {...props} rotation={[-1, 2, 0]}>
+          <torusGeometry args={[1.5, 0.6]} />
+          <meshStandardMaterial color={"green"} />
+        </mesh>
+      </Float>
+      <mesh {...props} ref={meshRef}>
+        <sphereGeometry args={[0.5]} />
+        <meshStandardMaterial color={"purple"} />
       </mesh>
-    </Float>
+    </>
   );
 }
 
 export default function Hero() {
+  const { width, height } = useWindowDimensions();
+
   return (
-    <div className="border border-red-700 h-96">
+    <div className="border border-red-700 h-[80vh]">
       <Canvas
-        className="border border-black"
-        camera={{ position: [0, 0, 10], zoom: 30 }}
+        className="border border-black h-96 p-2"
+        camera={{ position: [0, 0, 10], zoom: 50 }}
         orthographic
       >
         <ambientLight intensity={0.3} />
         <pointLight position={[0, 1, 6]} />
-        <Cube />
+        <Cube
+          position={[
+            width ? -(width / 100) : -15,
+            height ? -(height / 200) : -8,
+            0,
+          ]}
+        />
+        <Loop />
       </Canvas>
     </div>
   );

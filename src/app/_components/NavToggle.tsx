@@ -1,5 +1,5 @@
 import { motion, useCycle } from "framer-motion";
-import useWindowDimensions from "./useWindowDimension";
+import useWindowDimensions from "../_utils/useWindowDimension";
 
 // TODO - Better handle props typing for additional reactive animation
 const HamLine = (props: any) => (

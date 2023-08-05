@@ -2,7 +2,7 @@ import Hero from "./_components/Hero";
 
 export default function Index() {
   return (
-    <div className="">
+    <div className="h-screen">
       <Hero />
     </div>
   );
