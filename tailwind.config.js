@@ -1,18 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  plugins: [
-    require('@tailwindcss/typography')
-  ],
-  darkMode: 'class',
+  plugins: [require("@tailwindcss/typography")],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        'standard': {
+        standard: {
           100: "#E8E6E1",
           200: "#D3CEC4",
           300: "#B8B2A7",
@@ -31,7 +29,7 @@ module.exports = {
           delete: "#D11046",
           darkdelete: "#EE1B57",
         },
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
