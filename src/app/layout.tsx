@@ -1,5 +1,5 @@
 import "./globals.css";
-import { inter } from "../fonts";
+import { inter, poiret } from "../fonts";
 import { Metadata } from "next";
 import Providers from "./Provider";
 import Footer from "./_components/Footer";
