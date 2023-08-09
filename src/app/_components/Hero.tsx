@@ -1,11 +1,12 @@
 "use client";
-import { useState, useRef } from "react";
-import { Canvas, MeshProps, useFrame } from "@react-three/fiber";
-import { Mesh, Vector3 } from "three";
-import { Float } from "@react-three/drei";
+import { useState, useRef, useEffect, Suspense } from "react";
+import { Canvas, MeshProps, useFrame, useLoader } from "@react-three/fiber";
+import { Mesh, Texture, TextureLoader, Vector3 } from "three";
+import { Float, Point, Points, PositionPoint } from "@react-three/drei";
 import useWindowDimensions from "../_utils/useWindowDimension";
 import { TypeAnimation } from "react-type-animation";
 import { inter, poiret } from "../../fonts";
+import { useTheme } from "next-themes";
 
 function Cube(props: MeshProps) {
   // This reference will give us direct access to the mesh
@@ -93,7 +94,7 @@ function Cone(props: MeshProps) {
         rotation={[0.8, 0.4, -0.3]}
         ref={meshRef}
         onClick={() =>
-          radialSegments < 32 ? setRadialSegments(radialSegments + 1) : null
+          radialSegments < 32 ? setRadialSegments(radialSegments + 2) : null
         }
         onPointerEnter={() => setHovered(true)}
         onPointerLeave={() => setHovered(false)}
@@ -102,6 +103,49 @@ function Cone(props: MeshProps) {
         <meshStandardMaterial color={hovered ? "#FFC247" : "#CC8800"} />
       </mesh>
     </>
+  );
+}
+
+function Stars(props: MeshProps) {
+  const [mounted, setMounted] = useState(false);
+  const { systemTheme, theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
+  const currentTheme = theme === "system" ? systemTheme : theme;
+
+  function getRandomParticlePos(particleCount: number) {
+    const arr = new Array(particleCount);
+    for (let i = 0; i < particleCount; i++) {
+      arr[i] = [(Math.random() - 0.5) * 40, (Math.random() - 0.5) * 40, -100];
+    }
+    return arr;
+  }
+
+  const PARTICLE_COUNT = 100;
+  const particlePositionArray = getRandomParticlePos(PARTICLE_COUNT);
+  const starTexture = useLoader(TextureLoader, "/sp2.png");
+
+  return (
+    <Suspense fallback={null}>
+      <Points limit={PARTICLE_COUNT} range={500}>
+        <pointsMaterial vertexColors size={5} map={starTexture} transparent />
+        {particlePositionArray.map((value) => {
+          return (
+            <Point
+              position={value}
+              color={currentTheme == "light" ? "black" : "white"}
+            />
+          );
+        })}
+      </Points>
+    </Suspense>
   );
 }
 
@@ -129,13 +173,14 @@ export default function Hero() {
           scale={1}
         />
         <Cone
-          position={[width ? -width / 200 : -2, height ? height / 175 : 4, -8]}
+          position={[width ? -width / 200 : -2, height ? height / 400 : 4, -8]}
           scale={width ? Math.max(width / 1250, 0.8) : 1.4}
         />
+        <Stars />
       </Canvas>
       <span className="block mx-auto my-auto absolute top-0 md:top-32 left-0 right-0 w-1/2 text-center rounded-xl">
         <div
-          className={`[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-6xl w-full m-8 text-center mx-auto text-standard-900 shadow-white ${inter.className} font-medium`}
+          className={`[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-6xl w-full m-8 text-center mx-auto text-standard-900 dark:text-standard-100 dark:shadow-standard-900 shadow-standard-100 ${inter.className} font-medium`}
         >
           Hi, I'm Danyal
         </div>
