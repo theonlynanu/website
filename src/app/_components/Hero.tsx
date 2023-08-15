@@ -7,7 +7,7 @@ import Loop from "./Loop";
 import Cone from "./Cone";
 import Stars from "./Stars";
 import { TypeAnimation } from "react-type-animation";
-import HeroSphere from "./HeroSphere";
+import Eyeball from "./Eyeball";
 
 export default function Hero() {
   const { width, height } = useWindowDimensions();
@@ -42,7 +42,7 @@ export default function Hero() {
             scale={width ? Math.max(width / 1250, 0.8) : 1.4}
           />
           <Stars />
-          <HeroSphere
+          <Eyeball
             position={[
               width ? -width / 500 : -1.5,
               height ? -height / 200 : -3.7,

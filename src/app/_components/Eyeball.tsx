@@ -4,7 +4,7 @@ import { MeshProps, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Mesh } from "three";
 
-export default function HeroSphere(props: MeshProps) {
+export default function Eyeball(props: MeshProps) {
   const meshRef = useRef<Mesh>(null!);
   useFrame(({ mouse, viewport }) => {
     const x = (mouse.x * viewport.width) / 2;
