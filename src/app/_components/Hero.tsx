@@ -8,6 +8,7 @@ import Cone from "./Cone";
 import Stars from "./Stars";
 import { TypeAnimation } from "react-type-animation";
 import Eyeball from "./Eyeball";
+import { croissant, montaga, poiret } from "../../fonts";
 
 export default function Hero() {
   const { width, height } = useWindowDimensions();
@@ -53,10 +54,13 @@ export default function Hero() {
       </Suspense>
       <span className="block mx-auto my-auto absolute top-0 left-0 right-0 w-1/2 text-center rounded-xl">
         <div
-          className={`[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-6xl w-full m-8 text-center mx-auto text-standard-900 dark:text-standard-100 dark:shadow-standard-900 shadow-standard-100 font-serif font-medium`}
+          className={`[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-6xl w-full m-8 text-center mx-auto text-standard-900 dark:text-standard-100 dark:shadow-standard-900 shadow-standard-100 ${montaga.className} font-serif font-light`}
         >
           Hi, I'm Danyal
         </div>
+        {
+          // TODO Externalize TypeAnimation Component
+        }
         <TypeAnimation
           className="[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-xl shadow-standard-100 dark:shadow-standard-900 "
           sequence={[
@@ -68,6 +72,7 @@ export default function Hero() {
             3000,
           ]}
           repeat={Infinity}
+          speed={60}
         />
       </span>
     </div>
