@@ -14,7 +14,7 @@ export default function Hero() {
   const { width, height } = useWindowDimensions();
 
   return (
-    <div className="h-[80vh] relative -left-5 w-[100vw] bg-standard-100 dark:bg-standard-900">
+    <div className="h-[80vh] relative bg-standard-100 dark:bg-standard-900">
       <Suspense fallback={null}>
         <Canvas
           className=" h-96 p-0"
