@@ -1,10 +1,11 @@
+import About from "./_components/About";
 import Hero from "./_components/Hero";
-import Game from "./tictactoe/_components/game";
 
 export default function Index() {
   return (
     <div className="">
       <Hero />
+      <About />
     </div>
   );
 }
