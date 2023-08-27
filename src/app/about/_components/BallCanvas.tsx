@@ -26,15 +26,22 @@ function Ball({ imgUrl }: { imgUrl: string }) {
   );
 }
 
-const BallCanvas = ({ icon }: { icon: string }) => {
+export function BallCanvas({ icon }: { icon: string }) {
   return (
     <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }}>
-      <Suspense>
-        <OrbitControls enableZoom={false} rotateSpeed={0.25} />
-        <Ball imgUrl={icon} />
-      </Suspense>
+      <OrbitControls enableZoom={false} rotateSpeed={0.25} />
+      <Ball imgUrl={icon} />
     </Canvas>
   );
-};
+}
 
-export default BallCanvas;
+export function FallbackCanvas() {
+  return (
+    <Canvas>
+      <mesh>
+        <sphereGeometry />
+        <meshStandardMaterial color={"white"} />
+      </mesh>
+    </Canvas>
+  );
+}
