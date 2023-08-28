@@ -52,8 +52,8 @@ export const technologies = [
     icon: "/tech/gcloud.png",
   },
   {
-    name: "MongoDB",
-    icon: "/tech/mongo.png",
+    name: "AWS",
+    icon: "/tech/aws.png",
   },
   {
     name: "HTML5",
