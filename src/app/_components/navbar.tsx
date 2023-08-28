@@ -3,34 +3,32 @@ import { motion } from "framer-motion";
 import { ReactNode } from "@mdx-js/react/lib";
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { BsGithub } from "react-icons/bs";
-import { clsx } from "clsx";
 import DarkModeBtn from "./DarkModeBtn";
 import NavToggle from "./NavToggle";
 
 function Logo() {
   const router = useRouter();
+  const isBrowser = () => typeof window !== "undefined";
   return (
     <motion.img
       src="/profile.png"
       className="gap flex h-8 w-8 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2"
-      onClick={() => router.push("/")}
+      onClick={() => {
+        if (!isBrowser()) return;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        router.push("/", { scroll: false });
+      }}
       whileHover={{ scale: 1.1 }}
     />
   );
 }
 
 function NavLink({ href, children }: { href: string; children: ReactNode }) {
-  const currentRoute = usePathname();
   return (
     <Link
-      className={clsx(
-        "text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl",
-        currentRoute === href
-          ? "underline decoration-standard-800 dark:decoration-standard-300"
-          : ""
-      )}
+      className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
       href={href}
     >
       {children}
@@ -40,6 +38,7 @@ function NavLink({ href, children }: { href: string; children: ReactNode }) {
 
 function FramerNav() {
   const [isOpen, setIsOpen] = useState(true);
+  const isBrowser = () => typeof window !== "undefined";
 
   // TODO - Implement null keyframing to reduce lag if the menu toggle is rapidly triggered-
   // TODO - for some reason, using keyframes in variants is throwing a type error and not properly
@@ -78,8 +77,18 @@ function FramerNav() {
         className="inset-x-0 mx-auto flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end dark:bg-standard-700 min-[736px]:ml-0"
       >
         <Logo />
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/about">About</NavLink>
+        <Link
+          className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
+          href="/"
+          scroll={false}
+          onClick={() => {
+            if (!isBrowser()) return;
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          Home
+        </Link>
+        <NavLink href="#about">About</NavLink>
         <a
           className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
           href="https://github.com/theonlynanu/personal-site"
