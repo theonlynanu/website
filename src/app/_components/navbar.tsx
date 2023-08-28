@@ -88,7 +88,7 @@ function FramerNav() {
         >
           Home
         </Link>
-        <NavLink href="#about">About</NavLink>
+        <NavLink href="/#about">About</NavLink>
         <a
           className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
           href="https://github.com/theonlynanu/personal-site"
