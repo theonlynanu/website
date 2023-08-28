@@ -75,7 +75,7 @@ export default function Hero() {
           speed={60}
         />
       </span>
-
+      {/* // TODO - May want to externalize SVG waves */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform-gpu rotate-180">
         <svg
           data-name="Layer 1"
