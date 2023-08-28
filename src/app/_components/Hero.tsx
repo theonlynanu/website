@@ -14,7 +14,7 @@ export default function Hero() {
   const { width, height } = useWindowDimensions();
 
   return (
-    <div className="h-[80vh] relative bg-standard-100 dark:bg-standard-900">
+    <article className="h-[80vh] relative bg-standard-100 dark:bg-standard-900">
       <Suspense fallback={null}>
         <Canvas
           className=" h-96 p-0"
@@ -64,18 +64,20 @@ export default function Hero() {
         <TypeAnimation
           className="[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-xl shadow-standard-100 dark:shadow-standard-900 "
           sequence={[
-            "A full-stack developer",
-            3000,
+            "A software developer",
+            5000,
             "A web designer",
             3000,
-            "A React developer",
+            "An aspiring full-stack engineer",
             3000,
           ]}
           repeat={Infinity}
           speed={60}
         />
       </span>
-      {/* // TODO - May want to externalize SVG waves */}
+      {
+        // TODO - May want to externalize SVG waves
+      }
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform-gpu rotate-180">
         <svg
           data-name="Layer 1"
@@ -100,6 +102,6 @@ export default function Hero() {
           ></path>
         </svg>
       </div>
-    </div>
+    </article>
   );
 }
