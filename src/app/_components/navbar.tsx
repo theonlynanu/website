@@ -14,7 +14,7 @@ function Logo() {
   return (
     <motion.img
       src="/profile.png"
-      className="gap flex h-8 w-8 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2"
+      className="gap flex h-6 w-6 md:h-8 md:w-8 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2"
       onClick={() => {
         if (!isBrowser()) return;
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -28,7 +28,7 @@ function Logo() {
 function NavLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link
-      className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
+      className="text-sm rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
       href={href}
     >
       {children}
@@ -78,7 +78,7 @@ function FramerNav() {
       >
         <Logo />
         <Link
-          className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
+          className="text-sm rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
           href="/"
           scroll={false}
           onClick={() => {
@@ -89,6 +89,7 @@ function FramerNav() {
           Home
         </Link>
         <NavLink href="/#about">About</NavLink>
+        <NavLink href="/#contact">Contact</NavLink>
         <a
           className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
           href="https://github.com/theonlynanu/personal-site"

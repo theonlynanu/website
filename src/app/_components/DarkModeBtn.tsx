@@ -40,7 +40,7 @@ const DarkModeBtn = () => {
   return (
     <motion.div
       className={clsx(
-        "flex h-10 w-16 cursor-pointer rounded-full p-2",
+        "flex h-7 w-12 md:h-10 md:w-16 cursor-pointer rounded-full p-1 md:p-2 items-center",
         !isThemeLight
           ? "justify-end bg-standard-400"
           : "justify-start bg-standard-200"
@@ -52,7 +52,7 @@ const DarkModeBtn = () => {
     >
       <motion.div
         className={clsx(
-          "h-6 w-6 rounded-full",
+          "h-4 w-4 md:h-6 md:w-6 rounded-full ",
           isThemeLight ? "bg-standard-900" : "bg-standard-100"
         )}
         layout
