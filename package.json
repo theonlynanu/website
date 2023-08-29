@@ -26,6 +26,7 @@
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
+    "emailjs": "^4.0.2",
     "eslint": "^8.45.0",
     "eslint-config-next": "^13.4.10",
     "framer-motion": "^10.13.0",
