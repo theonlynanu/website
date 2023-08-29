@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function Index() {
   return (
-    <>
+    <section className="mb-12">
       <Game />
-    </>
+    </section>
   );
 }

@@ -49,7 +49,7 @@ export default function Game() {
                 setGameMode(e.target.value);
                 reset();
               }}
-              className="block rounded-lg border border-gray-200 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              className="block rounded-lg border border-gray-200 bg-standard-200 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-standard-100 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             >
               <option value="local">Local</option>
               <option value="ai-first">AI - Move First</option>
@@ -61,7 +61,7 @@ export default function Game() {
         </form>
       </div>
 
-      <div className="">
+      <div className=" mx-4">
         <Board
           squares={currentBoard}
           xIsNext={xIsNext}
