@@ -20,7 +20,7 @@ export default function About() {
           what I'm working on now
         </p>
       </header>
-      <div className="flex flex-col md:flex-row lg:gap-12">
+      <div className="flex flex-col md:flex-row lg:gap-12 mb-8">
         <section className="flex flex-col gap-2 flex-grow basis-0 m-8">
           <h3 className="text-3xl font-semibold">Get to know me!</h3>
           <p>
@@ -70,7 +70,31 @@ export default function About() {
           </div>
         </section>
       </div>
-      <p className="h-96"></p>
+      <svg
+        viewBox="0 0 900 96"
+        className="bg-standard-100 dark:bg-standard-900"
+      >
+        <path
+          d="M0 43L60 91L120 52L180 59L240 44L300 84L360 56L420 77L480 65L540 61L600 85L660 82L720 96L780 85L840 91L900 64L900 0L840 0L780 0L720 0L660 0L600 0L540 0L480 0L420 0L360 0L300 0L240 0L180 0L120 0L60 0L0 0Z"
+          className="fill-standard-200 dark:fill-standard-800"
+        ></path>
+        <path
+          d="M0 80L60 66L120 57L180 45L240 74L300 39L360 59L420 39L480 51L540 46L600 46L660 80L720 50L780 69L840 70L900 37L900 0L840 0L780 0L720 0L660 0L600 0L540 0L480 0L420 0L360 0L300 0L240 0L180 0L120 0L60 0L0 0Z"
+          className="fill-standard-300 dark:fill-standard-700"
+        ></path>
+        <path
+          d="M0 63L60 31L120 55L180 55L240 56L300 53L360 63L420 51L480 54L540 46L600 54L660 60L720 36L780 33L840 63L900 63L900 0L840 0L780 0L720 0L660 0L600 0L540 0L480 0L420 0L360 0L300 0L240 0L180 0L120 0L60 0L0 0Z"
+          className="fill-standard-500 dark:standard-400"
+        ></path>
+        <path
+          d="M0 36L60 36L120 23L180 37L240 27L300 42L360 29L420 18L480 26L540 28L600 24L660 46L720 19L780 21L840 30L900 44L900 0L840 0L780 0L720 0L660 0L600 0L540 0L480 0L420 0L360 0L300 0L240 0L180 0L120 0L60 0L0 0Z"
+          className="fill-standard-700 dark:fill-standard-300"
+        ></path>
+        <path
+          d="M0 16L60 24L120 23L180 29L240 20L300 16L360 19L420 23L480 9L540 21L600 23L660 12L720 17L780 27L840 22L900 29L900 0L840 0L780 0L720 0L660 0L600 0L540 0L480 0L420 0L360 0L300 0L240 0L180 0L120 0L60 0L0 0Z"
+          className="fill-standard-900 dark:fill-standard-100"
+        ></path>
+      </svg>
     </article>
   );
 }
