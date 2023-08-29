@@ -34,9 +34,23 @@ export default function About() {
             lot of valuable experiences learning from people and making
             connections. If you have thoughts or want to connect, feel free to
             Connect or Follow me on my{" "}
-            <a href="www.linkedin.com/in/danyal-ahmed-b187a22b">LinkedIn</a>, or
-            make a pull request to my GitHub! I am open to freelance work for
-            both personal and business websites.
+            <a
+              href="www.linkedin.com/in/danyal-ahmed-b187a22b"
+              target="_blank"
+              className="text-standard-500 dark:text-standard-800 font-semibold hover:underline"
+            >
+              LinkedIn
+            </a>
+            , or make a pull request to my{" "}
+            <a
+              href="https://github.com/theonlynanu"
+              target="_blank"
+              className="text-standard-500 dark:text-standard-800 font-semibold hover:underline"
+            >
+              GitHub
+            </a>
+            ! I am open to freelance work for both personal and business
+            websites.
           </p>
           <p>
             My love for design and technology inspired me throughout my
@@ -67,6 +81,12 @@ export default function About() {
                 </PopIn>
               );
             })}
+          </div>
+          <div className="mt-12">
+            Here for the tic-tac-toe demo? Check it out{" "}
+            <a href="/tictactoe" className="font-semibold hover:underline">
+              here!
+            </a>
           </div>
         </section>
       </div>
