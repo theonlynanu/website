@@ -142,7 +142,7 @@ export default function Contact() {
         <PopIn>
           <motion.button
             type="submit"
-            className="w-fit h-8 rounded-full text-lg mb-12 px-4 bg-standard-primary dark:bg-standard-darkprimary mt-6"
+            className="w-fit h-8 rounded-full text-lg mb-12 px-4 bg-standard-primary dark:bg-standard-darkprimary mt-6 text-standard-900"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
