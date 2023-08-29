@@ -61,8 +61,8 @@ export default function About() {
               open
             </strong>{" "}
             to job opportunities where I can contribute, learn, and grow. If you
-            have a good opportunity that matches my skills and skillset, please
-            feel free to contact me!
+            have a good opportunity that matches my experience and skillset,
+            please feel free to contact me!
           </p>
         </section>
         <section className="flex-grow basis-0 m-8">
