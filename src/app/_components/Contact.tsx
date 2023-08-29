@@ -78,11 +78,13 @@ export default function Contact() {
 
   return (
     <article id="contact" className="m-8">
-      <h2 className={`text-3xl ${montaga.className} my-4`}>Contact</h2>
-      <h3 className="text-sm md:text-base">
-        Feel free to reach out about open positions, potential project
-        opportunities, or just to connect!
-      </h3>
+      <header>
+        <h2 className={`text-3xl ${montaga.className} my-4`}>Contact</h2>
+        <h3 className="text-sm md:text-base">
+          Feel free to reach out about open positions, potential project
+          opportunities, or just to connect!
+        </h3>
+      </header>
       <form
         ref={formRef}
         onSubmit={handleSubmit}
