@@ -13,13 +13,16 @@ const Footer = () => {
         </p>
       </div>
       <div className="flex flex-row gap-4 self-center">
-        <a href="https://github.com/theonlynanu">
+        <a target="_blank" href="https://github.com/theonlynanu">
           <BsGithub className="fill-standard-100 dark:fill-standard-900 w-6 h-6" />
         </a>
-        <a href="www.linkedin.com/in/danyal-ahmed-b187a22b">
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
+        >
           <BsLinkedin className="fill-standard-100 dark:fill-standard-900 w-6 h-6" />
         </a>
-        <a href="https://t.me/theonlynanu">
+        <a target="_blank" href="https://t.me/theonlynanu">
           <BsTelegram className="fill-standard-100 dark:fill-standard-900 w-6 h-6" />
         </a>
       </div>
