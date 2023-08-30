@@ -68,10 +68,13 @@ export default function About() {
         <section className="flex-grow basis-0 m-8">
           <h2 className="text-3xl font-semibold mb-2">My Skills</h2>
           <div className="flex flex-wrap gap-2">
-            {technologies.map((technology) => {
+            {technologies.map((technology, index) => {
               return (
                 <PopIn>
-                  <span className="border border-standard-600 dark:border-standard-300 rounded-md py-1 px-2 bg-standard-800 dark:bg-standard-200 text-xs md:text-base mb-2">
+                  <span
+                    key={index}
+                    className="border border-standard-600 dark:border-standard-300 rounded-md py-1 px-2 bg-standard-800 dark:bg-standard-200 text-xs md:text-base mb-2"
+                  >
                     <img
                       src={technology.icon}
                       className="w-4 md:w-6 inline align-middle md:align-top mr-1"
