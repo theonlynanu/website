@@ -15,7 +15,7 @@ export default function About() {
           About Me
         </h2>
         <TbSeparator className="mx-auto" size={40} />
-        <p className="text-center">
+        <p className="text-center mx-8">
           Here you'll find some information about me, my current skills, and
           what I'm working on now
         </p>
