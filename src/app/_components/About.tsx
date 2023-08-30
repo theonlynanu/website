@@ -35,7 +35,7 @@ export default function About() {
             connections. If you have thoughts or want to connect, feel free to
             Connect or Follow me on my{" "}
             <a
-              href="www.linkedin.com/in/danyal-ahmed-b187a22b"
+              href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
               target="_blank"
               className="text-standard-500 dark:text-standard-800 font-semibold hover:underline"
             >
