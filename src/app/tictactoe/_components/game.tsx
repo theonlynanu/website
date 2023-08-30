@@ -52,10 +52,10 @@ export default function Game() {
               className="block rounded-lg border border-gray-200 bg-standard-200 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-standard-100 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             >
               <option value="local">Local</option>
-              <option value="ai-first">AI - Move First</option>
-              <option value="ai-second">AI - Move Second</option>
-              <option value="random-first">Random - Move First</option>
-              <option value="random-second">Random - Move Second</option>
+              <option value="ai-first">AI - You Move First</option>
+              <option value="ai-second">AI - You Move Second</option>
+              <option value="random-first">Random - You Move First</option>
+              <option value="random-second">Random - You Move Second</option>
             </select>
           </label>
         </form>
