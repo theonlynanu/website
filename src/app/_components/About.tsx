@@ -2,7 +2,7 @@
 import { montaga } from "../../fonts";
 import PopIn from "../_utils/popIn";
 import { technologies } from "../about/constants/technologies";
-import { TbSeparator } from "react-icons/tb";
+import { TbSeparator, TbBrandLinkedin, TbBrandGithub } from "react-icons/tb";
 
 export default function About() {
   return (
@@ -24,16 +24,17 @@ export default function About() {
         <section className="flex flex-col gap-2 flex-grow basis-0 m-8">
           <h3 className="text-3xl font-semibold">Get to know me!</h3>
           <p>
-            I am a self-taught software developer currently working on building
+            I am a software developer, astronomy lover, and full-time nerd, currently working on building
             my skills as a <strong>full-stack engineer</strong>. I'm passionate
             about building things, and I'm excited to continue learning and
             applying new things every day.
           </p>
           <p>
-            While I'm still new to the web development community, I have had a
+            I love the web development community, I've had a
             lot of valuable experiences learning from people and making
-            connections. If you have thoughts or want to connect, feel free to
-            Connect or Follow me on my{" "}
+            connections across all fields. I'd love to get the chance to make you a part of my community! 
+            Feel free to Connect or Follow me on my{" "}
+            <TbBrandLinkedin />
             <a
               href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
               target="_blank"
@@ -42,6 +43,7 @@ export default function About() {
               LinkedIn
             </a>
             , or make a pull request to my{" "}
+            <TbBrandGithub />
             <a
               href="https://github.com/theonlynanu"
               target="_blank"
@@ -54,9 +56,9 @@ export default function About() {
           </p>
           <p>
             My love for design and technology inspired me throughout my
-            background in astrophysics and chemistry. I like to leverage a wide
-            array of experiences and influences to create with both elegance and
-            functionality in mind. I am{" "}
+            background in astrophysics and chemistry. I like to leverage my wide
+            array of experiences and influences to create, both with elegance and
+            functionality in mind. I am currently{" "}
             <strong className="text-standard-darkconfirm dark:text-standard-confirm">
               open
             </strong>{" "}
