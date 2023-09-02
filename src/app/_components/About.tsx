@@ -34,7 +34,7 @@ export default function About() {
             lot of valuable experiences learning from people and making
             connections across all fields. I'd love to get the chance to make you a part of my community! 
             Feel free to Connect or Follow me on my{" "}
-            <TbBrandLinkedin className="inline" />
+            <TbBrandLinkedin className="inline text-standard-500 dark:text-standard-800" />
             <a
               href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
               target="_blank"
@@ -43,7 +43,7 @@ export default function About() {
               LinkedIn
             </a>
             , or make a pull request to my{" "}
-            <TbBrandGithub className="inline" />
+            <TbBrandGithub className="inline text-standard-500 dark:text-standard-800" />
             <a
               href="https://github.com/theonlynanu"
               target="_blank"
