@@ -1,7 +1,7 @@
 "use client";
 import { montaga } from "../../fonts";
 import PopIn from "../_utils/popIn";
-import { technologies } from "../about/constants/technologies";
+import { technologies } from "../_constants/technologies";
 import { TbSeparator, TbBrandLinkedin, TbBrandGithub } from "react-icons/tb";
 
 export default function About() {
@@ -24,16 +24,17 @@ export default function About() {
         <section className="flex flex-col gap-2 flex-grow basis-0 m-8">
           <h3 className="text-3xl font-semibold">Get to know me!</h3>
           <p>
-            I am a software developer, astronomy lover, and full-time nerd, currently working on building
-            my skills as a <strong>full-stack engineer</strong>. I'm passionate
-            about building things, and I'm excited to continue learning and
-            applying new things every day.
+            I am a software developer, astronomy lover, and full-time nerd,
+            currently working on building my skills as a{" "}
+            <strong>full-stack engineer</strong>. I'm passionate about building
+            things, and I'm excited to continue learning and applying new things
+            every day.
           </p>
           <p>
-            I love the web development community, I've had a
-            lot of valuable experiences learning from people and making
-            connections across all fields. I'd love to get the chance to make you a part of my community! 
-            Feel free to Connect or Follow me on my{" "}
+            I love the web development community, I've had a lot of valuable
+            experiences learning from people and making connections across all
+            fields. I'd love to get the chance to make you a part of my
+            community! Feel free to Connect or Follow me on my{" "}
             <TbBrandLinkedin className="inline text-standard-500 dark:text-standard-800" />
             <a
               href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
@@ -57,8 +58,8 @@ export default function About() {
           <p>
             My love for design and technology inspired me throughout my
             background in astrophysics and chemistry. I like to leverage my wide
-            array of experiences and influences to create, both with elegance and
-            functionality in mind. I am currently{" "}
+            array of experiences and influences to create, both with elegance
+            and functionality in mind. I am currently{" "}
             <strong className="text-standard-darkconfirm dark:text-standard-confirm">
               open
             </strong>{" "}
