@@ -73,9 +73,9 @@ export default function About() {
           <div className="flex flex-wrap gap-2">
             {technologies.map((technology, index) => {
               return (
-                <PopIn>
+                <PopIn key={index}>
                   <span
-                    key={index}
+                    key={`child-${index}`}
                     className="border border-standard-600 dark:border-standard-300 rounded-md py-1 px-2 bg-standard-800 dark:bg-standard-200 text-xs md:text-base mb-2"
                   >
                     <img
