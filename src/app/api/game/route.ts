@@ -12,7 +12,6 @@ export async function POST(req: Request) {
   apiHeaders.set("X_API_KEY", key);
 
   let move: string | undefined = undefined;
-
   await fetch(url, {
     method: "POST",
     mode: "cors",
@@ -27,8 +26,6 @@ export async function POST(req: Request) {
       if (move === undefined) {
         console.log("Error: ", data.detail[0].msg);
         throw new Error(data.detail[0].msg);
-      } else {
-        console.log("Move: ", move);
       }
     })
     .catch((error: Error) => {
