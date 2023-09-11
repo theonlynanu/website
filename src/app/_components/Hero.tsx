@@ -21,8 +21,8 @@ export default function Hero() {
           camera={{ position: [0, 0, 10], zoom: 50 }}
           orthographic
         >
-          <ambientLight intensity={0.3} />
-          <pointLight position={[0, 2, 6]} />
+          <ambientLight intensity={1} />
+          <pointLight position={[0, 2, 4]} intensity={175} />
           <Cube
             position={[
               width ? -(width / 80) : -15,
