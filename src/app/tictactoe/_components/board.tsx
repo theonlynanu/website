@@ -1,8 +1,6 @@
 "use client";
 
-import { ThemeProvider } from "next-themes";
 import Square from "./square";
-import axios from "axios";
 
 export default function Board({
   squares,
@@ -29,26 +27,25 @@ export default function Board({
   }
 
   async function get_ai_move(squares: boardState[], model: string) {
-    const requestBody = JSON.stringify({ state: squares });
-    const config = {
-      method: "post",
-      url: `https://testimage-p77sme7tjq-uk.a.run.app/api/ai-move/${model}`,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        X_API_KEY: process.env.API_KEY,
-      },
-      data: requestBody,
-    };
-    const axios = require("axios").default;
+    const requestData = JSON.stringify({ state: squares, gamemode: model });
 
-    axios
-      .request(config)
-      .then((response: any) => {
-        handleClick(response.data.ai_move);
+    await fetch("/api/game", {
+      method: "POST",
+      mode: "cors",
+      body: requestData,
+    })
+      .then((response: Response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Error contacting API - please send me a message!");
+        }
       })
-      .catch((error: any) => {
-        console.log(error.response.status);
+      .then((data) => {
+        handleClick(data.ai_move);
+      })
+      .catch((error: Error) => {
+        console.log(error);
       });
   }
 
