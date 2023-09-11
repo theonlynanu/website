@@ -21,7 +21,7 @@ export default function Hero() {
           camera={{ position: [0, 0, 10], zoom: 50 }}
           orthographic
         >
-          <ambientLight intensity={1} />
+          <ambientLight intensity={1.5} />
           <pointLight position={[0, 2, 4]} intensity={175} />
           <Cube
             position={[
@@ -65,8 +65,8 @@ export default function Hero() {
           className="[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-xl shadow-standard-100 dark:shadow-standard-900 "
           sequence={[
             "A software developer",
-            5000,
-            "A web designer",
+            3000,
+            "A web developer",
             3000,
             "An aspiring full-stack engineer",
             3000,
