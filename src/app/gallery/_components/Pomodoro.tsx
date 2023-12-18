@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import clsx from "clsx";
 import Timer from "./Timer";
 import CircularProgressBar from "./CircularProgressBar";
 
@@ -23,6 +22,9 @@ export default function Pomodoro() {
     "work"
   );
 
+  // ! This is for enabling the progress slider for testing the animation -
+  // ! it is NOT necessary for ring animation and should be removed after testing
+  // ! is complete
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -84,17 +86,6 @@ export default function Pomodoro() {
     console.log(remainingReps);
   }
 
-  function getProgress(status: "work" | "break" | "rest", time: number) {
-    let prog: number;
-    status === "work"
-      ? runTimeInSeconds / workTime
-      : status === "break"
-      ? runTimeInSeconds / breakTime
-      : runTimeInSeconds / restTime;
-
-    return progress;
-  }
-
   return (
     <div>
       <div className="relative flex flex-col ">
@@ -103,10 +94,10 @@ export default function Pomodoro() {
             currStatus === "work"
               ? 1 - runTimeInSeconds / workTime
               : currStatus === "break"
-              ? 1 - runTimeInSeconds / breakTime
-              : 1 - runTimeInSeconds / restTime
+                ? 1 - runTimeInSeconds / breakTime
+                : 1 - runTimeInSeconds / restTime
           }
-          className="absolute  self-center "
+          className="absolute self-center drop-shadow-[0_2px_3px_#857F72]"
         />
         <div className="relative z-20 mx-auto my-8 flex h-64 w-64 flex-col justify-around gap-4 rounded-full">
           <button

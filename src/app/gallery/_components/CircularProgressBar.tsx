@@ -18,7 +18,7 @@ export default function CircularProgressBar({
   // Interpolate the color based on the progress from green to red
   function interpolateColor(progress: number) {
     const red = Math.min(255, 2 * 255 * progress);
-    const green = Math.max(0, 255 * (1 - progress));
+    const green = Math.max(0, 2.5 * 255 * (1 - progress));
     return `rgba(${red}, ${green}, 100, 75%)`;
   }
 
