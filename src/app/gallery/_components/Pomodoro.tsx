@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Timer from "./Timer";
 import CircularProgressBar from "./CircularProgressBar";
+import { motion } from "framer-motion";
+import { FaPause, FaPlay } from "react-icons/fa";
 
 export default function Pomodoro() {
   const [workTime, setWorkTime] = useState(1500);
@@ -86,6 +88,18 @@ export default function Pomodoro() {
     console.log(remainingReps);
   }
 
+  const variants = {
+    running: {
+      scale: 1.1,
+      textShadow: "4px 4px 4px rgba(0, 0, 0, 0.2)",
+      borderRadius: 50,
+    },
+    stopped: {
+      scale: 1,
+      textShadow: "",
+    },
+  };
+
   return (
     <div>
       <div className="relative flex flex-col ">
@@ -100,37 +114,47 @@ export default function Pomodoro() {
           className="absolute self-center drop-shadow-[0_2px_3px_#857F72]"
         />
         <div className="relative z-20 mx-auto my-8 flex h-64 w-64 flex-col justify-around gap-4 rounded-full">
-          <button
-            className="h-8 w-fit self-center rounded-full border border-black px-2 disabled:text-gray-400"
+          <motion.button
+            className="bg-standard-primary dark:bg-standard-darkprimary text-standard-900 h-8 w-fit self-center rounded-full px-2 disabled:bg-gray-600 disabled:text-gray-400"
             disabled={isRunning}
             onClick={() => {
               isAwait ? nextPhase() : reset();
             }}
+            whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+            whileHover={
+              !isRunning
+                ? { scale: 1.05, boxShadow: "4px 4px 0 rgba(0,0,0,0.2)" }
+                : {}
+            }
           >
             {isAwait ? "Confirm" : "Reset"}
-          </button>
-          <Timer
-            className="w-fit self-center  text-center align-middle text-6xl"
-            remainingSeconds={runTimeInSeconds}
-          ></Timer>
-          <button
-            className="container w-16 self-center border border-black disabled:text-gray-400"
+          </motion.button>
+          <motion.div
+            variants={variants}
+            animate={isRunning ? "running" : "stopped"}
+            className="w-fit self-center "
+          >
+            <Timer
+              className="w-fit self-center  text-center align-middle text-6xl"
+              remainingSeconds={runTimeInSeconds}
+            ></Timer>
+          </motion.div>
+          <motion.button
+            className="bg-standard-primary dark:bg-standard-darkprimary container w-16 self-center rounded-full px-4 py-2 disabled:text-gray-400"
             onClick={() => setIsRunning(!isRunning)}
             disabled={isAwait}
+            whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+            whileHover={{ scale: 1.05, boxShadow: "4px 4px 0 rgba(0,0,0,0.2)" }}
           >
-            {isRunning ? "Pause" : "Start"}
-          </button>
+            {isRunning ? (
+              <FaPause className="mx-auto" />
+            ) : (
+              <FaPlay className="mx-auto" />
+            )}
+          </motion.button>
         </div>
       </div>
-      <input
-        onChange={(e) => setProgress(parseFloat(e.currentTarget.value))}
-        type="range"
-        min="0"
-        max="1"
-        step="0.01"
-        defaultValue={0}
-      ></input>
-      {progress}
+
       <div>
         <div>
           <label htmlFor="WorkTime">Work Time:</label>
@@ -209,13 +233,14 @@ export default function Pomodoro() {
             <option value={3}>60 Min</option>
           </select>
         </div>
+        <p>Remaining Repetitions: {remainingReps}</p>
       </div>
-      <br />
+
       <br />
       <strong>Testing UI</strong>
       <br />
       <button
-        className="m-2 rounded-md border border-standard-900 p-2"
+        className="border-standard-900 m-2 rounded-md border p-2"
         onClick={() => {
           reset();
         }}
@@ -223,7 +248,7 @@ export default function Pomodoro() {
         Reset
       </button>
       <button
-        className="rounded-md border border-standard-900 p-2"
+        className="border-standard-900 rounded-md border p-2"
         onClick={() => setRunTimeInSeconds(1)}
       >
         DEV BUTTON
@@ -231,7 +256,6 @@ export default function Pomodoro() {
       <br />
       <p>Running: {isRunning.toString()}</p>
       <p>State: {currStatus}</p>
-      <p>Remaining Repetitions: {remainingReps}</p>
     </div>
   );
 }
