@@ -14,7 +14,7 @@ export default function Hero() {
   const { width, height } = useWindowDimensions();
 
   return (
-    <article className="h-[80vh] relative bg-standard-100 dark:bg-standard-900">
+    <article className="bg-standard-100 dark:bg-standard-900 relative h-[80vh]">
       <Suspense fallback={null}>
         <Canvas
           className=" h-96 p-0"
@@ -52,9 +52,9 @@ export default function Hero() {
           />
         </Canvas>
       </Suspense>
-      <span className="block mx-auto my-auto absolute top-0 left-0 right-0 w-1/2 text-center rounded-xl">
+      <span className="absolute left-0 right-0 top-0 mx-auto my-auto block w-1/2 rounded-xl text-center">
         <div
-          className={`[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-6xl w-full m-8 text-center mx-auto text-standard-900 dark:text-standard-100 dark:shadow-standard-900 shadow-standard-100 ${montaga.className} font-serif font-light`}
+          className={`text-standard-900 dark:text-standard-100 dark:shadow-standard-900 shadow-standard-100 m-8 mx-auto w-full text-center text-6xl [text-shadow:_0_0px_2px_var(--tw-shadow-color)] ${montaga.className} font-serif font-light`}
         >
           Hi, I'm Danyal
         </div>
@@ -62,7 +62,7 @@ export default function Hero() {
           // TODO Externalize TypeAnimation Component
         }
         <TypeAnimation
-          className="[text-shadow:_0_0px_2px_var(--tw-shadow-color)] text-xl shadow-standard-100 dark:shadow-standard-900 "
+          className="shadow-standard-100 dark:shadow-standard-900 text-xl [text-shadow:_0_0px_2px_var(--tw-shadow-color)] "
           sequence={[
             "A software developer",
             3000,
@@ -78,13 +78,13 @@ export default function Hero() {
       {
         // TODO - May want to externalize SVG waves
       }
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform-gpu rotate-180">
+      <div className="absolute bottom-0 left-0 w-full rotate-180 transform-gpu overflow-hidden leading-[0]">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
-          className="relative block w-[calc(100%+1.3px)] h-[50px]"
+          className="relative block h-[50px] w-[calc(100%+1.3px)]"
         >
           <path
             d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
