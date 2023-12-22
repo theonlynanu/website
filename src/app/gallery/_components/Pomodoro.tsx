@@ -24,11 +24,6 @@ export default function Pomodoro() {
     "work"
   );
 
-  // ! This is for enabling the progress slider for testing the animation -
-  // ! it is NOT necessary for ring animation and should be removed after testing
-  // ! is complete
-  const [progress, setProgress] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
       if (isRunning) {
@@ -140,7 +135,7 @@ export default function Pomodoro() {
             ></Timer>
           </motion.div>
           <motion.button
-            className="bg-standard-primary dark:bg-standard-darkprimary container w-16 self-center rounded-full px-4 py-2 disabled:text-gray-400"
+            className="bg-standard-primary dark:bg-standard-darkprimary text-standard-900 container w-16 self-center rounded-full px-4 py-2 disabled:text-gray-400"
             onClick={() => setIsRunning(!isRunning)}
             disabled={isAwait}
             whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
@@ -155,12 +150,22 @@ export default function Pomodoro() {
         </div>
       </div>
 
-      <div>
-        <div>
-          <label htmlFor="WorkTime">Work Time:</label>
+      <p className="m-4 text-center text-3xl">
+        You are currently{" "}
+        {currStatus === "work"
+          ? "working."
+          : currStatus === "break"
+            ? "taking a break."
+            : "taking your rest!"}
+      </p>
+
+      <div className="flex flex-row flex-wrap justify-center">
+        <div className="my-4 w-1/2 text-center">
+          <label htmlFor="WorkTime">Work Time: </label>
           <select
             name="Work Time"
             id="WorkTime"
+            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
             defaultValue={1500}
             disabled={isRunning}
             onChange={(e) => {
@@ -178,11 +183,12 @@ export default function Pomodoro() {
             <option value={1800}>30 Min</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="breakTime">Break Time:</label>
+        <div className="my-4 w-1/2 text-center">
+          <label htmlFor="breakTime">Break Time: </label>
           <select
             name="Break Time"
             id="breakTime"
+            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
             defaultValue={300}
             disabled={isRunning}
             onChange={(e) => {
@@ -195,11 +201,12 @@ export default function Pomodoro() {
             <option value={600}>10 Min</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="repetitions">Repetitions before rest:</label>
+        <div className="my-4 w-1/2 text-center">
+          <label htmlFor="repetitions">Repetitions before rest: </label>
           <select
             name="Repetitions before Rest"
             id="Repetitions"
+            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
             defaultValue={4}
             disabled={isRunning}
             onChange={(e) => {
@@ -215,11 +222,12 @@ export default function Pomodoro() {
             <option value={5}>5</option>
           </select>
         </div>
-        <div>
-          <label htmlFor="restTime">Rest Time</label>
+        <div className="my-4 w-1/2 text-center">
+          <label htmlFor="restTime">Rest Time: </label>
           <select
             name="Rest Time"
             id="restTime"
+            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
             defaultValue={2}
             disabled={isRunning}
             onChange={(e) => {
@@ -233,7 +241,7 @@ export default function Pomodoro() {
             <option value={3}>60 Min</option>
           </select>
         </div>
-        <p>Remaining Repetitions: {remainingReps}</p>
+        <p className="">Remaining Poms: {remainingReps}</p>
       </div>
 
       <br />
