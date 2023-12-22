@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 import { clsx } from "clsx";
+import { FiMoon } from "react-icons/fi";
+import { CgSun } from "react-icons/cg";
 
 const DarkModeBtn = () => {
   const [mounted, setMounted] = useState(false);
@@ -40,7 +42,7 @@ const DarkModeBtn = () => {
   return (
     <motion.div
       className={clsx(
-        "flex h-7 w-12 md:h-10 md:w-16 cursor-pointer rounded-full p-1 md:p-2 items-center",
+        "flex h-7 w-12 cursor-pointer items-center rounded-full p-1 md:h-10 md:w-16 md:p-2",
         !isThemeLight
           ? "justify-end bg-standard-400"
           : "justify-start bg-standard-200"
@@ -52,13 +54,19 @@ const DarkModeBtn = () => {
     >
       <motion.div
         className={clsx(
-          "h-4 w-4 md:h-6 md:w-6 rounded-full ",
+          "h-4 w-4 rounded-full md:h-6 md:w-6",
           isThemeLight ? "bg-standard-900" : "bg-standard-100"
         )}
         layout
         transition={spring}
         variants={switchVariants}
-      />
+      >
+        {isThemeLight ? (
+          <FiMoon className="z-10 mx-auto mt-1 h-2 w-2 text-standard-100 md:h-4 md:w-4" />
+        ) : (
+          <CgSun className="z-10 mx-auto mt-1 h-2 w-2 text-standard-900 md:h-4 md:w-4" />
+        )}
+      </motion.div>
     </motion.div>
   );
 };
