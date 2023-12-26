@@ -62,9 +62,9 @@ const DarkModeBtn = () => {
         variants={switchVariants}
       >
         {isThemeLight ? (
-          <FiMoon className="z-10 mx-auto mt-1 h-2 w-2 text-standard-100 md:h-4 md:w-4" />
+          <FiMoon className="z-10 mx-auto mt-1 h-2 w-2 text-standard-500 md:h-4 md:w-4" />
         ) : (
-          <CgSun className="z-10 mx-auto mt-1 h-2 w-2 text-standard-900 md:h-4 md:w-4" />
+          <CgSun className="z-10 mx-auto mt-1 h-2 w-2 text-standard-500 md:h-4 md:w-4" />
         )}
       </motion.div>
     </motion.div>
