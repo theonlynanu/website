@@ -4,6 +4,7 @@ import Timer from "./Timer";
 import CircularProgressBar from "./CircularProgressBar";
 import { motion } from "framer-motion";
 import { FaPause, FaPlay } from "react-icons/fa";
+import { GiTomato } from "react-icons/gi";
 
 export default function Pomodoro() {
   const [workTime, setWorkTime] = useState(1500);
@@ -95,6 +96,12 @@ export default function Pomodoro() {
     },
   };
 
+  const poms: JSX.Element[] = [];
+
+  for (let i = 0; i < remainingReps; i++) {
+    poms.push(<GiTomato key={i} className="inline text-red-700" />);
+  }
+
   return (
     <div>
       <div className="relative flex flex-col ">
@@ -110,7 +117,7 @@ export default function Pomodoro() {
         />
         <div className="relative z-20 mx-auto my-8 flex h-64 w-64 flex-col justify-around gap-4 rounded-full">
           <motion.button
-            className="bg-standard-primary dark:bg-standard-darkprimary text-standard-900 h-8 w-fit self-center rounded-full px-2 disabled:bg-gray-600 disabled:text-gray-400"
+            className="h-8 w-fit self-center rounded-full bg-standard-primary px-2 font-semibold text-standard-900 disabled:bg-gray-600 disabled:text-gray-400 dark:bg-standard-darkprimary dark:disabled:bg-gray-600"
             disabled={isRunning}
             onClick={() => {
               isAwait ? nextPhase() : reset();
@@ -135,7 +142,7 @@ export default function Pomodoro() {
             ></Timer>
           </motion.div>
           <motion.button
-            className="bg-standard-primary dark:bg-standard-darkprimary text-standard-900 container w-16 self-center rounded-full px-4 py-2 disabled:text-gray-400"
+            className="container w-16 self-center rounded-full bg-standard-primary px-4 py-2 text-standard-900 disabled:text-gray-400 dark:bg-standard-darkprimary"
             onClick={() => setIsRunning(!isRunning)}
             disabled={isAwait}
             whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
@@ -165,7 +172,7 @@ export default function Pomodoro() {
           <select
             name="Work Time"
             id="WorkTime"
-            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
+            className="cursor-pointer rounded-xl border border-standard-900 bg-transparent px-2 py-1 dark:border-standard-100"
             defaultValue={1500}
             disabled={isRunning}
             onChange={(e) => {
@@ -188,7 +195,7 @@ export default function Pomodoro() {
           <select
             name="Break Time"
             id="breakTime"
-            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
+            className="cursor-pointer rounded-xl border border-standard-900 bg-transparent px-2 py-1 dark:border-standard-100"
             defaultValue={300}
             disabled={isRunning}
             onChange={(e) => {
@@ -206,7 +213,7 @@ export default function Pomodoro() {
           <select
             name="Repetitions before Rest"
             id="Repetitions"
-            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
+            className="cursor-pointer rounded-xl border border-standard-900 bg-transparent px-2 py-1 dark:border-standard-100"
             defaultValue={4}
             disabled={isRunning}
             onChange={(e) => {
@@ -227,7 +234,7 @@ export default function Pomodoro() {
           <select
             name="Rest Time"
             id="restTime"
-            className="border-standard-900 dark:border-standard-100 rounded-xl border bg-transparent px-2 py-1"
+            className="cursor-pointer rounded-xl border border-standard-900 bg-transparent px-2 py-1 dark:border-standard-100"
             defaultValue={2}
             disabled={isRunning}
             onChange={(e) => {
@@ -241,29 +248,17 @@ export default function Pomodoro() {
             <option value={3}>60 Min</option>
           </select>
         </div>
-        <p className="">Remaining Poms: {remainingReps}</p>
+        <p className="">Remaining Poms: {poms}</p>
+        <br />
       </div>
-
-      <br />
-      <strong>Testing UI</strong>
-      <br />
-      <button
-        className="border-standard-900 m-2 rounded-md border p-2"
-        onClick={() => {
-          reset();
-        }}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setRunTimeInSeconds(0)}
+        className="mx-auto my-8 block w-fit rounded-full  border border-standard-900 px-2 pb-1 font-semibold hover:bg-standard-warn active:bg-standard-delete dark:border-standard-100 dark:hover:bg-standard-warn dark:active:bg-standard-darkdelete"
       >
-        Reset
-      </button>
-      <button
-        className="border-standard-900 rounded-md border p-2"
-        onClick={() => setRunTimeInSeconds(1)}
-      >
-        DEV BUTTON
-      </button>
-      <br />
-      <p>Running: {isRunning.toString()}</p>
-      <p>State: {currStatus}</p>
+        {">>"}
+      </motion.button>
     </div>
   );
 }
