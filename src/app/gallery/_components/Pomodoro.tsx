@@ -5,6 +5,7 @@ import CircularProgressBar from "./CircularProgressBar";
 import { motion } from "framer-motion";
 import { FaPause, FaPlay } from "react-icons/fa";
 import { GiTomato } from "react-icons/gi";
+import useSound from "use-sound";
 
 export default function Pomodoro() {
   const [workTime, setWorkTime] = useState(1500);
@@ -25,6 +26,8 @@ export default function Pomodoro() {
     "work"
   );
 
+  const [playAlarm, { stop }] = useSound("/sounds/alarm.mp3", {});
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (isRunning) {
@@ -35,6 +38,7 @@ export default function Pomodoro() {
     if (runTimeInSeconds === 0) {
       setIsRunning(false);
       setIsAwait(true);
+      playAlarm();
     }
 
     return () => clearInterval(interval);
@@ -121,6 +125,7 @@ export default function Pomodoro() {
             disabled={isRunning}
             onClick={() => {
               isAwait ? nextPhase() : reset();
+              stop();
             }}
             whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
             whileHover={
