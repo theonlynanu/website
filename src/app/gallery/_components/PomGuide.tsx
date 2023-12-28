@@ -85,16 +85,17 @@ export default function PomGuide() {
           of tasks to work on
         </motion.div>
         <motion.div className="w-fit" variants={children}>
-          <TbHexagonNumber2 className="inline h-6 w-6" /> Work for 25 minutes.
-          Take care to avoid distractions and maximize your concentration
+          <TbHexagonNumber2 className="inline h-6 w-6" /> <strong>Work</strong>{" "}
+          for 25 minutes. Take care to avoid distractions and maximize your
+          concentration
         </motion.div>
         <motion.div className="w-fit " variants={children}>
           <TbHexagonNumber3 className="inline h-6 w-6" /> Take a five minute
-          break. No sneaking in any work!
+          <strong> break</strong>. No sneaking in any work!
         </motion.div>
         <motion.div className="w-fit " variants={children}>
           <TbHexagonNumber4 className="inline h-6 w-6" /> One of these
-          work-break cycles is referred to as <strong>one Pomodoro </strong>
+          work-break cycles is referred to as one <strong>Pomodoro </strong>
           <GiTomato className="inline text-red-700" />
         </motion.div>
         <motion.div className="w-fit " variants={children}>
@@ -104,9 +105,9 @@ export default function PomGuide() {
           <strong>rest</strong> of 30 minutes.
         </motion.div>
         <motion.div className="w-fit " variants={children}>
-          <TbHexagonNumber6 className="inline h-6 w-6" />
-          Repeat until you're done your work! You can measure the time each task
-          took to complete by counting the <strong>Pomodoros</strong>
+          <TbHexagonNumber6 className="inline h-6 w-6" /> Repeat until you're
+          done your work! You can measure the time each task took to complete by
+          counting the <strong>Pomodoros </strong>
           <GiTomato className="inline text-red-700" /> that it took! Each pom is
           a 30 minute block, and each full cycle is an hour!
         </motion.div>
