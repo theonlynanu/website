@@ -29,19 +29,19 @@ export default function Loading() {
   return (
     <div>
       <motion.div
-        className="flex flex-row gap-2 h-32 mx-auto justify-center my-auto"
+        className="mx-auto my-auto flex h-32 flex-row justify-center gap-2"
         initial="hidden"
         variants={container}
         animate="show"
       >
         <motion.span
           variants={dot}
-          className="w-8 h-8 block rounded-full bg-standard-900 dark:bg-standard-100"
+          className="block h-8 w-8 rounded-full bg-standard-900 dark:bg-standard-100"
           transition={dotTransition}
         />
         <motion.span
           variants={dot}
-          className="w-8 h-8 block rounded-full bg-standard-900 dark:bg-standard-100"
+          className="block h-8 w-8 rounded-full bg-standard-900 dark:bg-standard-100"
           transition={{
             repeat: Infinity,
             repeatType: "reverse",
@@ -49,7 +49,7 @@ export default function Loading() {
         />
         <motion.span
           variants={dot}
-          className="w-8 h-8 block rounded-full bg-standard-900 dark:bg-standard-100"
+          className="block h-8 w-8 rounded-full bg-standard-900 dark:bg-standard-100"
           transition={dotTransition}
         />
       </motion.div>

@@ -17,7 +17,7 @@ export default function NavToggle() {
 
   return (
     <motion.div
-      className="top-2 z-10 mx-auto flex h-16 w-16 shrink-0 cursor-pointer items-center rounded-full bg-standard-primary drop-shadow-lg dark:bg-standard-darkprimary md:ml-8"
+      className="top-2 z-10 mx-auto flex h-16 w-16 shrink-0 cursor-pointer items-center rounded-full bg-standard-primary drop-shadow-lg md:ml-8 dark:bg-standard-darkprimary"
       whileTap={{ scale: 0.9, transition: { duration: 0.2 } }}
       whileHover={{ scale: [null, 1.05], transition: { duration: 0.2 } }}
       animate={isOpen ? "open" : "closed"}

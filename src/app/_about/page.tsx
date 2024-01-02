@@ -41,7 +41,7 @@ export default function About() {
   };
   return (
     <>
-      <button onClick={makeCall} className="p-4 border border-standard-500 m-4">
+      <button onClick={makeCall} className="m-4 border border-standard-500 p-4">
         Make call
       </button>
       <p>{test}</p>

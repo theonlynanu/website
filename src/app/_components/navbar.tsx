@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ReactNode } from "@mdx-js/react/lib";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BsGithub } from "react-icons/bs";
@@ -14,7 +13,7 @@ function Logo() {
   return (
     <motion.img
       src="/profile.png"
-      className="gap flex h-6 w-6 md:h-8 md:w-8 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2"
+      className="gap flex h-6 w-6 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2 md:h-8 md:w-8"
       onClick={() => {
         if (!isBrowser()) return;
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -28,7 +27,7 @@ function Logo() {
 function NavLink({ href, children }: { href: string; children: ReactNode }) {
   return (
     <Link
-      className="text-sm rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
+      className="rounded-full px-3 py-2 text-sm hover:bg-standard-200 lg:text-xl dark:hover:bg-standard-800"
       href={href}
     >
       {children}
@@ -68,17 +67,17 @@ function FramerNav() {
 
   // TODO - once other pages are present, add an animated background to indicate current page in Navbar.
   return (
-    <motion.nav className="fixed inset-x-0 top-8 mx-2 flex flex-row flex-wrap-reverse justify-start gap-1 px-0 z-50">
+    <motion.nav className="fixed inset-x-0 top-8 z-50 mx-2 flex flex-row flex-wrap-reverse justify-start gap-1 px-0">
       <NavToggle toggleHandler={handleToggle} />
       <motion.nav
         animate={isOpen ? "open" : "closed"}
         initial={{ x: -1500 }}
         variants={variants}
-        className="inset-x-0 mx-auto flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end dark:bg-standard-700 min-[736px]:ml-0"
+        className="inset-x-0 mx-auto flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end min-[736px]:ml-0 dark:bg-standard-700"
       >
         <Logo />
         <Link
-          className="text-sm rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
+          className="rounded-full px-3 py-2 text-sm hover:bg-standard-200 lg:text-xl dark:hover:bg-standard-800"
           href="/"
           scroll={false}
           onClick={() => {
@@ -88,10 +87,10 @@ function FramerNav() {
         >
           Home
         </Link>
-        <NavLink href="/#about">About</NavLink>
-        <NavLink href="/#contact">Contact</NavLink>
+        <NavLink href="/gallery">Gallery</NavLink>
+        <NavLink href="/contact">Contact</NavLink>
         <a
-          className="text-md rounded-full px-3 py-2 hover:bg-standard-200 dark:hover:bg-standard-800 lg:text-xl"
+          className="text-md rounded-full px-3 py-2 hover:bg-standard-200 lg:text-xl dark:hover:bg-standard-800"
           href="https://github.com/theonlynanu/personal-site"
           target="_blank"
         >

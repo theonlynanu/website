@@ -19,7 +19,6 @@
   "useTabs": false,
   "embeddedLanguageFormatting": "auto",
   "vueIndentScriptAndStyle": false,
-  "filepath": "c:\\Users\\Angie\\site\\website\\src\\app\\gallery\\_components\\Pomodoro.tsx",
   "parser": "typescript",
   "plugins": ["prettier-plugin-tailwindcss"]
 }

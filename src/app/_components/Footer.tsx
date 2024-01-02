@@ -3,9 +3,9 @@ import { BsLinkedin, BsGithub, BsTelegram } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="h-fit bg-standard-900 dark:bg-standard-100 text-standard-100 dark:text-standard-900 my-0 py-8 px-8 flex flex-row justify-between">
+    <footer className="bottom-0 my-0 flex h-fit w-full flex-row justify-between bg-standard-900 px-8 py-8 text-standard-100 dark:bg-standard-100 dark:text-standard-900">
       <div
-        className={`${montaga.className} flex flex-col justify-around h-full`}
+        className={`${montaga.className} flex h-full flex-col justify-around`}
       >
         <p className="text-xl">Danyal Ahmed</p>
         <p className="text-sm">
@@ -14,16 +14,16 @@ const Footer = () => {
       </div>
       <div className="flex flex-row gap-4 self-center">
         <a target="_blank" href="https://github.com/theonlynanu">
-          <BsGithub className="fill-standard-100 dark:fill-standard-900 w-6 h-6" />
+          <BsGithub className="h-6 w-6 fill-standard-100 dark:fill-standard-900" />
         </a>
         <a
           target="_blank"
           href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
         >
-          <BsLinkedin className="fill-standard-100 dark:fill-standard-900 w-6 h-6" />
+          <BsLinkedin className="h-6 w-6 fill-standard-100 dark:fill-standard-900" />
         </a>
         <a target="_blank" href="https://t.me/theonlynanu">
-          <BsTelegram className="fill-standard-100 dark:fill-standard-900 w-6 h-6" />
+          <BsTelegram className="h-6 w-6 fill-standard-100 dark:fill-standard-900" />
         </a>
       </div>
     </footer>

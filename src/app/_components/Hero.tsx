@@ -14,7 +14,7 @@ export default function Hero() {
   const { width, height } = useWindowDimensions();
 
   return (
-    <article className="bg-standard-100 dark:bg-standard-900 relative h-[80vh]">
+    <article className="relative h-[80vh] bg-standard-100 dark:bg-standard-900">
       <Suspense fallback={null}>
         <Canvas
           className=" h-96 p-0"
@@ -54,7 +54,7 @@ export default function Hero() {
       </Suspense>
       <span className="absolute left-0 right-0 top-0 mx-auto my-auto block w-1/2 rounded-xl text-center">
         <div
-          className={`text-standard-900 dark:text-standard-100 dark:shadow-standard-900 shadow-standard-100 m-8 mx-auto w-full text-center text-6xl [text-shadow:_0_0px_2px_var(--tw-shadow-color)] ${montaga.className} font-serif font-light`}
+          className={`m-8 mx-auto w-full text-center text-6xl text-standard-900 shadow-standard-100 [text-shadow:_0_0px_2px_var(--tw-shadow-color)] dark:text-standard-100 dark:shadow-standard-900 ${montaga.className} font-serif font-light`}
         >
           Hi, I'm Danyal
         </div>
@@ -62,7 +62,7 @@ export default function Hero() {
           // TODO Externalize TypeAnimation Component
         }
         <TypeAnimation
-          className="shadow-standard-100 dark:shadow-standard-900 text-xl [text-shadow:_0_0px_2px_var(--tw-shadow-color)] "
+          className="text-xl shadow-standard-100 [text-shadow:_0_0px_2px_var(--tw-shadow-color)] dark:shadow-standard-900 "
           sequence={[
             "A software developer",
             3000,

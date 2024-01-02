@@ -25,7 +25,7 @@ export default function RootLayout({
       >
         <Providers>
           <NavBar />
-          <main className="mt-40 md:mt-32 w-full">{children}</main>
+          <main className="mt-40 w-full md:mt-32">{children}</main>
           <Footer />
         </Providers>
       </body>

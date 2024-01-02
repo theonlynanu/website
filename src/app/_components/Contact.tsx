@@ -88,10 +88,10 @@ export default function Contact() {
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="flex flex-col my-6"
+        className="my-6 flex flex-col"
       >
         <PopIn>
-          <label className="flex flex-col mb-6 ">
+          <label className="mb-6 flex flex-col ">
             <span>Your Name</span>
             <input
               type="text"
@@ -99,12 +99,12 @@ export default function Contact() {
               value={form.name}
               onChange={handleChange}
               placeholder="Your name"
-              className="p-2 bg-standard-100 border border-standard-300 rounded-lg focus:bg-white text-standard-900 max-w-4xl"
+              className="max-w-4xl rounded-lg border border-standard-300 bg-standard-100 p-2 text-standard-900 focus:bg-white"
             />
           </label>
         </PopIn>
         <PopIn>
-          <label className="flex flex-col mb-6">
+          <label className="mb-6 flex flex-col">
             <span>Your Email Address</span>
             <input
               type="email"
@@ -112,7 +112,7 @@ export default function Contact() {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your email address?"
-              className="p-2 bg-standard-100 border border-standard-300 rounded-lg focus:bg-white text-standard-900 max-w-4xl"
+              className="max-w-4xl rounded-lg border border-standard-300 bg-standard-100 p-2 text-standard-900 focus:bg-white"
             />
           </label>
         </PopIn>
@@ -125,7 +125,7 @@ export default function Contact() {
               value={form.message}
               onChange={handleChange}
               placeholder="What do you want to say?"
-              className="p-2 bg-standard-100 border border-standard-300 rounded-lg focus-bg-white text-standard-900 max-w-9xl"
+              className="focus-bg-white max-w-9xl rounded-lg border border-standard-300 bg-standard-100 p-2 text-standard-900"
             />
           </label>
         </PopIn>
@@ -142,7 +142,7 @@ export default function Contact() {
         <PopIn>
           <motion.button
             type="submit"
-            className="w-fit h-8 rounded-full text-lg mb-12 px-4 bg-standard-primary dark:bg-standard-darkprimary mt-6 text-standard-900"
+            className="mb-12 mt-6 h-8 w-fit rounded-full bg-standard-primary px-4 text-lg text-standard-900 dark:bg-standard-darkprimary"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

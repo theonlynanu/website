@@ -7,7 +7,7 @@ import { TbSeparator, TbBrandLinkedin, TbBrandGithub } from "react-icons/tb";
 export default function About() {
   return (
     <article
-      className="bg-standard-900 dark:bg-standard-100 text-standard-100 dark:text-standard-900 w-full mx-0 pt-24"
+      className="mx-0 w-full bg-standard-900 pt-24 text-standard-100 dark:bg-standard-100 dark:text-standard-900"
       id="about"
     >
       <header className="mb-12">
@@ -15,13 +15,13 @@ export default function About() {
           About Me
         </h2>
         <TbSeparator className="mx-auto" size={40} />
-        <p className="text-center mx-8">
+        <p className="mx-8 text-center">
           Here you'll find some information about me, my current skills, and
           what I'm working on now
         </p>
       </header>
-      <div className="flex flex-col md:flex-row lg:gap-12 mb-8">
-        <section className="flex flex-col gap-2 flex-grow basis-0 m-8">
+      <div className="mb-8 flex flex-col md:flex-row lg:gap-12">
+        <section className="m-8 flex flex-grow basis-0 flex-col gap-2">
           <h3 className="text-3xl font-semibold">Get to know me!</h3>
           <p>
             I am a software developer, astronomy lover, and full-time nerd,
@@ -39,7 +39,7 @@ export default function About() {
             <a
               href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
               target="_blank"
-              className="text-standard-500 dark:text-standard-800 font-semibold hover:underline"
+              className="font-semibold text-standard-500 hover:underline dark:text-standard-800"
             >
               LinkedIn
             </a>
@@ -48,7 +48,7 @@ export default function About() {
             <a
               href="https://github.com/theonlynanu"
               target="_blank"
-              className="text-standard-500 dark:text-standard-800 font-semibold hover:underline"
+              className="font-semibold text-standard-500 hover:underline dark:text-standard-800"
             >
               GitHub
             </a>
@@ -68,19 +68,19 @@ export default function About() {
             please feel free to contact me!
           </p>
         </section>
-        <section className="flex-grow basis-0 m-8">
-          <h2 className="text-3xl font-semibold mb-2">My Skills</h2>
+        <section className="m-8 flex-grow basis-0">
+          <h2 className="mb-2 text-3xl font-semibold">My Skills</h2>
           <div className="flex flex-wrap gap-2">
             {technologies.map((technology, index) => {
               return (
                 <PopIn key={index}>
                   <span
                     key={`child-${index}`}
-                    className="border border-standard-600 dark:border-standard-300 rounded-md py-1 px-2 bg-standard-800 dark:bg-standard-200 text-xs md:text-base mb-2"
+                    className="mb-2 rounded-md border border-standard-600 bg-standard-800 px-2 py-1 text-xs md:text-base dark:border-standard-300 dark:bg-standard-200"
                   >
                     <img
                       src={technology.icon}
-                      className="w-4 md:w-6 inline align-middle md:align-top mr-1"
+                      className="mr-1 inline w-4 align-middle md:w-6 md:align-top"
                     />
                     {technology.name}
                   </span>
@@ -89,8 +89,12 @@ export default function About() {
             })}
           </div>
           <div className="mt-12">
-            Here for the tic-tac-toe demo? Check it out{" "}
-            <a href="/tictactoe" className="font-semibold hover:underline">
+            Want to grab a copy of my resume? Download it{" "}
+            <a
+              href="/files/Danyal-Ahmed-Resume.pdf"
+              className="font-semibold hover:underline"
+              download
+            >
               here!
             </a>
           </div>
@@ -110,7 +114,7 @@ export default function About() {
         ></path>
         <path
           d="M0 63L60 31L120 55L180 55L240 56L300 53L360 63L420 51L480 54L540 46L600 54L660 60L720 36L780 33L840 63L900 63L900 0L840 0L780 0L720 0L660 0L600 0L540 0L480 0L420 0L360 0L300 0L240 0L180 0L120 0L60 0L0 0Z"
-          className="fill-standard-500 dark:standard-400"
+          className="dark:standard-400 fill-standard-500"
         ></path>
         <path
           d="M0 36L60 36L120 23L180 37L240 27L300 42L360 29L420 18L480 26L540 28L600 24L660 46L720 19L780 21L840 30L900 44L900 0L840 0L780 0L720 0L660 0L600 0L540 0L480 0L420 0L360 0L300 0L240 0L180 0L120 0L60 0L0 0Z"
