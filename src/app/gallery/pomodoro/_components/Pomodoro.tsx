@@ -170,9 +170,8 @@ export default function Pomodoro() {
             ? "taking a break."
             : "taking your rest!"}
       </p>
-
       <div className="flex flex-row flex-wrap justify-center">
-        <div className="my-4 w-1/2 text-center">
+        <div className="my-4 flex w-1/2  flex-col items-center gap-2 text-center">
           <label htmlFor="WorkTime">Work Time: </label>
           <select
             name="Work Time"
@@ -195,7 +194,7 @@ export default function Pomodoro() {
             <option value={1800}>30 Min</option>
           </select>
         </div>
-        <div className="my-4 w-1/2 text-center">
+        <div className="my-4 flex w-1/2  flex-col items-center gap-2 text-center">
           <label htmlFor="breakTime">Break Time: </label>
           <select
             name="Break Time"
@@ -213,7 +212,7 @@ export default function Pomodoro() {
             <option value={600}>10 Min</option>
           </select>
         </div>
-        <div className="my-4 w-1/2 text-center">
+        <div className="my-4 flex w-1/2 flex-col items-center gap-2 text-center">
           <label htmlFor="repetitions">Repetitions before rest: </label>
           <select
             name="Repetitions before Rest"
@@ -234,7 +233,7 @@ export default function Pomodoro() {
             <option value={5}>5</option>
           </select>
         </div>
-        <div className="my-4 w-1/2 text-center">
+        <div className="my-4 flex w-1/2 flex-col items-center gap-2 text-center">
           <label htmlFor="restTime">Rest Time: </label>
           <select
             name="Rest Time"
