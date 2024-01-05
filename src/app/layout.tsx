@@ -20,7 +20,7 @@ export default function RootLayout({
       <body
         className={
           inter.className +
-          " bg-standard-100 text-standard-900 dark:bg-standard-900 dark:text-standard-100"
+          "overscroll-y-none bg-standard-100 text-standard-900 dark:bg-standard-900 dark:text-standard-100"
         }
       >
         <Providers>
