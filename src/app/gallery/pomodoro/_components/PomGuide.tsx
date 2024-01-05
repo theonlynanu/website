@@ -23,10 +23,10 @@ export default function PomGuide() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.2,
+        duration: 0.1,
         when: "beforeChildren",
         bounce: 0,
-        staggerChildren: 0.25,
+        staggerChildren: 0.03,
       },
     },
     invisible: {
@@ -47,7 +47,7 @@ export default function PomGuide() {
     },
     invisible: {
       opacity: 0,
-      x: -1,
+      x: -10,
       transition: {
         duration: 0,
       },
