@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Square from "./square";
 
 export default function Board({
@@ -13,6 +14,7 @@ export default function Board({
   onPlay(nextSquares: boardState[]): any;
   gameMode: string;
 }) {
+  const [isLoading, setIsLoading] = useState(false);
   function handleClick(i: number) {
     if (squares[i] || calculateWinner(squares)) {
       return;
@@ -28,7 +30,7 @@ export default function Board({
 
   async function get_ai_move(squares: boardState[], model: string) {
     const requestData = JSON.stringify({ state: squares, gamemode: model });
-
+    setIsLoading(true);
     await fetch("/api/game", {
       method: "POST",
       mode: "cors",
@@ -43,9 +45,11 @@ export default function Board({
       })
       .then((data) => {
         handleClick(data.ai_move);
+        setIsLoading(false);
       })
       .catch((error: Error) => {
         console.log(error);
+        setIsLoading(false);
       });
   }
 
@@ -76,7 +80,9 @@ export default function Board({
 
   const winner = calculateWinner(squares);
   let status: string;
-  if (winner) {
+  if (isLoading) {
+    status = "Awaiting move...";
+  } else if (winner) {
     status = `Winner: ${winner}`;
   } else if (!squares.includes(null)) {
     status = "Tie!";
