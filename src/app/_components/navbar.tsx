@@ -75,13 +75,13 @@ function FramerNav() {
 
   // TODO - once other pages are present, add an animated background to indicate current page in Navbar.
   return (
-    <motion.nav className="fixed inset-x-0 top-8 z-50 mx-2 flex flex-row flex-wrap-reverse justify-start gap-1 overflow-hidden px-0">
+    <motion.nav className="fixed inset-x-0 top-8 z-50 mx-2 flex flex-row flex-wrap-reverse justify-start gap-1 px-0">
       <NavToggle toggleHandler={handleToggle} />
       <motion.nav
         animate={isOpen ? "open" : "closed"}
         initial={{ x: -1500 }}
         variants={variants}
-        className="inset-x-0 mx-auto flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end min-[736px]:ml-0 dark:bg-standard-700"
+        className="inset-x-0 mx-auto flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center overflow-hidden rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end min-[736px]:ml-0 dark:bg-standard-700"
       >
         <Logo />
         <NavLink href="/">Home</NavLink>
