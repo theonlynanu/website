@@ -83,12 +83,12 @@ export default function Board({
 
   const winner = calculateWinner(squares);
   let status: string;
-  if (isLoading) {
-    status = "Awaiting move...";
-  } else if (winner) {
+  if (winner) {
     status = `Winner: ${winner}`;
   } else if (!squares.includes(null)) {
     status = "Tie!";
+  } else if (isLoading) {
+    status = "Awaiting move...";
   } else {
     status = `Next player: ${xIsNext ? "X" : "O"}`;
   }
