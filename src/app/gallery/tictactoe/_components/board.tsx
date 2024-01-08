@@ -30,7 +30,7 @@ export default function Board({
 
   async function get_ai_move(squares: boardState[], model: string) {
     const requestData = JSON.stringify({ state: squares, gamemode: model });
-    setIsLoading(true);
+
     await fetch("/api/game", {
       method: "POST",
       mode: "cors",
@@ -45,11 +45,10 @@ export default function Board({
       })
       .then((data) => {
         handleClick(data.ai_move);
-        setIsLoading(false);
+        if (isLoading) setIsLoading(false);
       })
       .catch((error: Error) => {
         console.log(error);
-        setIsLoading(false);
       });
   }
 
@@ -58,21 +57,25 @@ export default function Board({
       break;
     case "ai-first":
       if (!xIsNext) {
+        setTimeout(() => setIsLoading(true), 1);
         setTimeout(() => get_ai_move(squares, "minmax"), 300);
       }
       break;
     case "ai-second":
       if (xIsNext) {
+        setTimeout(() => setIsLoading(true), 1);
         setTimeout(() => get_ai_move(squares, "minmax"), 300);
       }
       break;
     case "random-first":
       if (!xIsNext) {
+        setTimeout(() => setIsLoading(true), 1);
         setTimeout(() => get_ai_move(squares, "random"), 300);
       }
       break;
     case "random-second":
       if (xIsNext) {
+        setTimeout(() => setIsLoading(true), 1);
         setTimeout(() => get_ai_move(squares, "random"), 300);
       }
       break;
