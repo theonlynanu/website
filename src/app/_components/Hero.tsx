@@ -9,6 +9,7 @@ import Stars from "./Stars";
 import { TypeAnimation } from "react-type-animation";
 import Eyeball from "./Eyeball";
 import { montaga } from "../../fonts";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const { width, height } = useWindowDimensions();
@@ -75,6 +76,30 @@ export default function Hero() {
           speed={60}
         />
       </span>
+      <motion.div
+        className="pxy absolute bottom-48 left-0 right-0 mx-auto w-fit rounded-full bg-standard-700 px-2 py-1 text-center text-2xl text-standard-100 opacity-35"
+        animate={{ opacity: [null, 0.5, 0] }}
+        initial={{ opacity: 0 }}
+        transition={{
+          delay: 5,
+          duration: 5,
+          times: [0, 0.8, 1],
+          repeat: 5,
+          repeatDelay: 10,
+        }}
+      >
+        <motion.div
+          animate={{ y: [0, -8, -15] }}
+          transition={{
+            repeat: 60,
+            repeatType: "reverse",
+            times: [0, 0.3, 1],
+            duration: 1,
+          }}
+        >
+          ⌄
+        </motion.div>
+      </motion.div>
       {
         // TODO - May want to externalize SVG waves
       }
