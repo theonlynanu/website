@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BsGithub } from "react-icons/bs";
 import DarkModeBtn from "./DarkModeBtn";
-import NavToggle from "./NavToggle";
 
 function Logo() {
   const router = useRouter();
@@ -69,34 +68,31 @@ function FramerNav() {
     },
   };
 
-  function handleToggle() {
-    setIsOpen(!isOpen);
-  }
-
   // TODO - once other pages are present, add an animated background to indicate current page in Navbar.
   return (
-    <motion.nav className="fixed inset-x-0 top-8 z-50 mx-2 flex flex-row flex-wrap-reverse justify-start gap-1 px-0">
-      <NavToggle toggleHandler={handleToggle} />
-      <motion.nav
-        animate={isOpen ? "open" : "closed"}
-        initial={{ x: -1500 }}
-        variants={variants}
-        className="inset-x-0 mx-auto flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center overflow-hidden rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end min-[736px]:ml-0 dark:bg-standard-700"
-      >
-        <Logo />
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/gallery">Gallery</NavLink>
-        <NavLink href="/contact">Contact</NavLink>
-        <a
-          className="text-md rounded-full px-3 py-2 hover:bg-standard-200 lg:text-xl dark:hover:bg-standard-800"
-          href="https://github.com/theonlynanu/personal-site"
-          target="_blank"
+    <div className="flex justify-center">
+      <motion.nav className="fixed top-8 z-50 mx-auto flex flex-row flex-wrap-reverse justify-start gap-1 px-0">
+        <motion.nav
+          animate={isOpen ? "open" : "closed"}
+          initial={{ x: -1500 }}
+          variants={variants}
+          className="inset-x-0 flex w-[95vw] max-w-[650px] flex-row items-center justify-between justify-self-center overflow-hidden rounded-full bg-standard-300 px-6 py-2 drop-shadow-xl last:justify-self-end min-[736px]:ml-0 dark:bg-standard-700"
         >
-          <BsGithub size={"1.5rem"} />
-        </a>
-        <DarkModeBtn />
+          <Logo />
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/gallery">Gallery</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
+          <a
+            className="text-md rounded-full px-3 py-2 hover:bg-standard-200 lg:text-xl dark:hover:bg-standard-800"
+            href="https://github.com/theonlynanu/personal-site"
+            target="_blank"
+          >
+            <BsGithub size={"1.5rem"} />
+          </a>
+          <DarkModeBtn />
+        </motion.nav>
       </motion.nav>
-    </motion.nav>
+    </div>
   );
 }
 
