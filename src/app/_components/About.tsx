@@ -5,6 +5,16 @@ import { technologies } from "../_constants/technologies";
 import { TbSeparator, TbBrandLinkedin, TbBrandGithub } from "react-icons/tb";
 import Image from "next/image";
 
+function Cert({ src, alt, link }: { src: string; alt: string; link?: string }) {
+  return (
+    <PopIn>
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        <Image src={src} alt={alt} height={150} width={150} />
+      </a>
+    </PopIn>
+  );
+}
+
 export default function About() {
   return (
     <article
@@ -90,23 +100,17 @@ export default function About() {
             })}
           </div>
           <h2 className="mb-2 mt-4 text-3xl font-semibold"> Certifications</h2>
-          <div className="flex flex-shrink flex-row">
-            <PopIn>
-              <Image
-                src="/AWS-Cloud-Prac.png"
-                alt="AWS Cloud Practitioner"
-                height={150}
-                width={150}
-              />
-            </PopIn>
-            <PopIn>
-              <Image
-                src="/GCC-IT-Badge.png"
-                alt="Google IT Certificate"
-                width={150}
-                height={150}
-              />
-            </PopIn>
+          <div className="flex flex-shrink flex-row gap-2">
+            <Cert
+              src="/AWS-Cloud-Prac.png"
+              alt="AWS Cloud Practitioner"
+              link="https://www.credly.com/badges/17daf863-ea8c-4961-acfa-e70569040b2d"
+            />
+            <Cert
+              src="/GCC-IT-Badge.png"
+              alt="Google IT Certificate"
+              link="https://www.coursera.org/account/accomplishments/specialization/W3YE8JKJJX5C"
+            />
           </div>
           <div className="mt-12">
             Want to grab a copy of my resume? Download it{" "}
