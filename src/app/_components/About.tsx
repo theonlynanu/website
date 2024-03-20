@@ -3,6 +3,7 @@ import { montaga } from "../../fonts";
 import PopIn from "../_utils/popIn";
 import { technologies } from "../_constants/technologies";
 import { TbSeparator, TbBrandLinkedin, TbBrandGithub } from "react-icons/tb";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -87,6 +88,25 @@ export default function About() {
                 </PopIn>
               );
             })}
+          </div>
+          <h2 className="mb-2 mt-4 text-3xl font-semibold"> Certifications</h2>
+          <div className="flex flex-shrink flex-row">
+            <PopIn>
+              <Image
+                src="/AWS-Cloud-Prac.png"
+                alt="AWS Cloud Practitioner"
+                height={150}
+                width={150}
+              />
+            </PopIn>
+            <PopIn>
+              <Image
+                src="/GCC-IT-Badge.png"
+                alt="Google IT Certificate"
+                width={150}
+                height={150}
+              />
+            </PopIn>
           </div>
           <div className="mt-12">
             Want to grab a copy of my resume? Download it{" "}
