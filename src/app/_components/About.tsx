@@ -91,6 +91,7 @@ export default function About() {
                   >
                     <img
                       src={technology.icon}
+                      alt={technology.name}
                       className="mr-1 inline w-4 align-middle md:w-6 md:align-top"
                     />
                     {technology.name}
