@@ -31,6 +31,12 @@ const galleryItems: galleryItem[] = [
     image: "/tomato.svg",
     altText: "Link to my Pomodoro Timer",
   },
+  {
+    name: "Q-Learning Pac-Man",
+    href: "/gallery/pacman",
+    image: "/pacman.svg",
+    altText: "Link to my Pac-Man project using q-learning!",
+  },
 ];
 
 export default function Index() {
