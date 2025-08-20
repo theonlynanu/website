@@ -18,6 +18,7 @@ function Logo() {
         window.scrollTo({ top: 0, behavior: "smooth" });
         router.push("/", { scroll: false });
       }}
+      alt="Home"
       whileHover={{ scale: 1.1 }}
     />
   );
