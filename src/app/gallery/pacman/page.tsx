@@ -35,7 +35,7 @@ export default function Index() {
         {""} or read it below. You can check out {""}
         <a
           className="visited:text- my-12 self-baseline text-standard-primary underline visited:text-standard-confirm dark:text-standard-darkprimary dark:visited:text-standard-darkconfirm"
-          href="https://github.com/theonlynanu/adversarial-pacman"
+          href="https://github.com/theonlynanu/QPacman"
           target="_blank"
         >
           the repo on Github
