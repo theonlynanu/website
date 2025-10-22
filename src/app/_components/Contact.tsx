@@ -50,7 +50,7 @@ export default function Contact() {
           from_email: form.email,
           message: form.message,
         },
-        "Ac72CRSyyzze_1zPs"
+        "Kj02ijyVzNkydlhAM"
       )
       .then(
         () => {
