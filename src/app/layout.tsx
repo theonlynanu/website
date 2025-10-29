@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Providers from "./Provider";
 import Footer from "./_components/Footer";
 import NavBar from "./_components/navbar";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Danyal Ahmed",
@@ -28,6 +29,7 @@ export default function RootLayout({
           <main className="mt-40 w-full md:mt-32">{children}</main>
           <Footer />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
