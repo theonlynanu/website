@@ -12,6 +12,7 @@ function Logo() {
   return (
     <motion.img
       src="/profile.png"
+      width={48}
       className="gap mr-2 flex h-6 w-6 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2 md:h-8 md:w-8"
       onClick={() => {
         if (!isBrowser()) return;

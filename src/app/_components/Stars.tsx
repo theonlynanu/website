@@ -8,8 +8,10 @@ import { useEffect, useState } from "react";
 export default function Stars(props: PointsProps) {
   const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
+  const [randomStarPos] = useState(() => Math.random);
   const starTexture = useTexture("/sp2.png");
 
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -23,7 +25,11 @@ export default function Stars(props: PointsProps) {
   function getRandomParticlePos(particleCount: number): number[] {
     const arr = new Array(particleCount);
     for (let i = 0; i < particleCount; i++) {
-      arr[i] = [(Math.random() - 0.5) * 40, (Math.random() - 0.5) * 20, -100];
+      arr[i] = [
+        (randomStarPos() - 0.5) * 40,
+        (randomStarPos() - 0.5) * 20,
+        -100,
+      ];
     }
     return arr;
   }

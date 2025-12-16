@@ -78,7 +78,7 @@ export default function PomGuide() {
         <div className="mx-4 w-fit">
           The Pomodoro Technique is a time management method, one that I use
           pretty often when I want to focus on a given set of tasks. I find it
-          really works quite well for me! Here's how it works.
+          really works quite well for me! Here&apos;s how it works.
         </div>
         <motion.div className="w-fit" variants={children}>
           <TbHexagonNumber1 className="inline h-6 w-6" /> Select a task or list
@@ -105,9 +105,9 @@ export default function PomGuide() {
           <strong>rest</strong> of 30 minutes.
         </motion.div>
         <motion.div className="w-fit " variants={children}>
-          <TbHexagonNumber6 className="inline h-6 w-6" /> Repeat until you're
-          done your work! You can measure the time each task took to complete by
-          counting the <strong>Pomodoros </strong>
+          <TbHexagonNumber6 className="inline h-6 w-6" /> Repeat until
+          you&apos;re done your work! You can measure the time each task took to
+          complete by counting the <strong>Pomodoros </strong>
           <GiTomato className="inline text-red-700" /> that it took! Each pom is
           a 30 minute block, and each full cycle is an hour!
         </motion.div>

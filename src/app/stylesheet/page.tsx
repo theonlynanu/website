@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import TestButton from "./_components/TestButton";
 import PopIn from "../_utils/popIn";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About | Danyal Ahmed",
@@ -13,11 +14,19 @@ export default function AboutPage() {
       <p>Check out the changes in dark mode!</p>
       <br />
       <figure className="my-8">
-        <img className="mx-auto w-2/3" src="/palette.jpg" />
+        <Image
+          className="mx-auto w-2/3"
+          src="/palette.jpg"
+          alt="Gradient Palette"
+        />
         <figcaption className="text-center text-sm">Main UI Palette</figcaption>
       </figure>
       <figure className="my-8">
-        <img className=" mx-auto w-2/3" src="/InteractivePalettes.png" />
+        <Image
+          className=" mx-auto w-2/3"
+          src="/InteractivePalettes.png"
+          alt="Palette of interactive elements for both light and dark modes"
+        />
         <figcaption className="text-center text-sm">
           Interactive Element Palette
         </figcaption>

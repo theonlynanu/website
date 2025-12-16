@@ -29,20 +29,28 @@ export default function Pomodoro() {
   const [playAlarm, { stop }] = useSound("/sounds/alarm.mp3", {});
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (isRunning) {
-        setRunTimeInSeconds(runTimeInSeconds - 1);
-      }
-    }, 1000);
-
-    if (runTimeInSeconds === 0) {
-      setIsRunning(false);
-      setIsAwait(true);
-      playAlarm();
+    if (!isRunning) {
+      stop();
+      return;
     }
 
-    return () => clearInterval(interval);
-  }, [runTimeInSeconds, isRunning]);
+    const interval = setInterval(() => {
+      setRunTimeInSeconds((prev) => {
+        if (prev <= 1) {
+          setIsRunning(false);
+          setIsAwait(true);
+          playAlarm();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+      stop();
+    };
+  }, [stop, isRunning, playAlarm]);
 
   // Trust me, these are DRYer than they look
   function reset() {

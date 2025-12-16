@@ -40,7 +40,7 @@ export default function Index() {
         >
           the repo on Github
         </a>
-        {""} if you're interested in running it yourself!
+        {""} if you&apos;re interested in running it yourself!
       </div>
       <PDFPreview />
     </div>

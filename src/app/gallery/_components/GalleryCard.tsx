@@ -23,6 +23,8 @@ export default function GalleryCard({
   const { systemTheme, theme } = useTheme();
   const { width, height } = useWindowDimensions();
   const currentTheme = theme === "system" ? systemTheme : theme;
+
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     setMounted(true);
   }, []);

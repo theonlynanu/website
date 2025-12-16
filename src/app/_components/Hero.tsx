@@ -57,7 +57,7 @@ export default function Hero() {
         <div
           className={`m-8 mx-auto w-full text-center text-6xl text-standard-900 shadow-standard-100 [text-shadow:_0_0px_2px_var(--tw-shadow-color)] dark:text-standard-100 dark:shadow-standard-900 ${montaga.className} font-serif font-light`}
         >
-          Hi, I'm Danyal
+          Hi, I&apos;m Danyal
         </div>
         {
           // TODO Externalize TypeAnimation Component

@@ -27,8 +27,8 @@ export default function About() {
         </h2>
         <TbSeparator className="mx-auto" size={40} />
         <p className="mx-8 text-center">
-          Here you'll find some information about me, my current skills, and
-          what I'm working on now
+          Here you&apos;ll find some information about me, my current skills,
+          and what I&apos;m working on now
         </p>
       </header>
       <div className="mb-8 flex flex-col md:flex-row lg:gap-12">
@@ -37,15 +37,15 @@ export default function About() {
           <p>
             I am a software developer, astronomy lover, and full-time nerd,
             currently working on building my skills as a{" "}
-            <strong>full-stack engineer</strong>. I'm passionate about building
-            things, and I'm excited to continue learning and applying new things
-            every day.
+            <strong>full-stack engineer</strong>. I&apos;m passionate about
+            building things, and I&apos;m excited to continue learning and
+            applying new things every day.
           </p>
           <p>
-            I love the web development community, I've had a lot of valuable
-            experiences learning from people and making connections across all
-            fields. I'd love to get the chance to make you a part of my
-            community! Feel free to Connect or Follow me on my{" "}
+            I love the web development community, I&apos;ve had a lot of
+            valuable experiences learning from people and making connections
+            across all fields. I&apos;d love to get the chance to make you a
+            part of my community! Feel free to Connect or Follow me on my{" "}
             <TbBrandLinkedin className="inline text-standard-500 dark:text-standard-800" />
             <a
               href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
@@ -89,9 +89,11 @@ export default function About() {
                     key={`child-${index}`}
                     className="mb-2 rounded-md border border-standard-600 bg-standard-800 px-2 py-1 text-xs md:text-base dark:border-standard-300 dark:bg-standard-200"
                   >
-                    <img
+                    <Image
                       src={technology.icon}
                       alt={technology.name}
+                      width={0}
+                      height={0}
                       className="mr-1 inline w-4 align-middle md:w-6 md:align-top"
                     />
                     {technology.name}

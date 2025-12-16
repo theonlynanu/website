@@ -1,11 +1,12 @@
+import Link from "next/link";
 import DarkModeBtn from "./DarkModeBtn";
 
 const Header = () => {
   return (
     <header className="flex gap-6">
-      <a className="text-2xl" href="/">
+      <Link className="text-2xl" href="/">
         Danyal Ahmed
-      </a>
+      </Link>
       <DarkModeBtn />
     </header>
   );
