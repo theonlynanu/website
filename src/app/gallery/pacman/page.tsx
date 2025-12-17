@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { montaga } from "../../../fonts";
 import { Metadata } from "next";
 import PDFPreview from "./_components/PDFPreview";
