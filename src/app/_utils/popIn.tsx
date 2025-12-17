@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 
-interface PopInProps extends React.HTMLAttributes<HTMLDivElement> {
+type PopInProps = HTMLMotionProps<"div"> & {
   initialX?: number;
   delaySeconds?: number;
   durationSeconds?: number;
+  once?: boolean;
 }
 
 const PopIn = ({
@@ -14,22 +15,33 @@ const PopIn = ({
   initialX,
   delaySeconds,
   durationSeconds,
+  once=true,
+  style,
+  ...rest
 }: PopInProps) => {
+  const reduceMotion = useReducedMotion();
+
+  const x0 = initialX ?? -10;
+  const delay = delaySeconds ?? 0.2;
+  const duration = durationSeconds ?? 0.5
+
+
   return (
     <motion.div
-      className={className}
-      initial={{
-        x: initialX ? initialX : -10,
-        opacity: 0,
-      }}
-      whileInView={{
+      className={className + " transform-gpu"}
+      style={{backfaceVisibility: "hidden", ...(style ?? {})}}
+      initial={reduceMotion ? false : {x: x0, opacity: 0}}
+      whileInView={ reduceMotion ? undefined : {
         x: 0,
         opacity: 1,
       }}
-      transition={{
-        delay: delaySeconds ? delaySeconds : 0.2,
-        duration: durationSeconds ? durationSeconds : 0.5,
+      transition={reduceMotion ? undefined : {
+        type: "tween",
+        delay,
+        duration
       }}
+      viewport={reduceMotion ? undefined : {once, amount: 0.2}}
+      {...rest}
     >
       {children}
     </motion.div>

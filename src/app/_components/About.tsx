@@ -32,7 +32,7 @@ export default function About() {
         </p>
       </header>
       <div className="mb-8 flex flex-col md:flex-row lg:gap-12">
-        <section className="m-8 flex flex-grow basis-0 flex-col gap-2">
+        <section className="m-8 flex grow basis-0 flex-col gap-2">
           <h3 className="text-3xl font-semibold">Get to know me!</h3>
           <p>
             I am a software developer, astronomy lover, and full-time nerd,
@@ -79,12 +79,12 @@ export default function About() {
             please feel free to contact me!
           </p>
         </section>
-        <section className="m-8 flex-grow basis-0">
+        <section className="m-8 grow basis-0">
           <h2 className="mb-2 text-3xl font-semibold">My Skills</h2>
           <div className="flex flex-wrap gap-2">
             {technologies.map((technology, index) => {
               return (
-                <PopIn key={index}>
+                <PopIn key={index} initial={{opacity: 0}} animate={{opacity: 1}}>
                   <span
                     key={`child-${index}`}
                     className="mb-2 rounded-md border border-standard-600 bg-standard-800 px-2 py-1 text-xs md:text-base dark:border-standard-300 dark:bg-standard-200"
@@ -103,7 +103,7 @@ export default function About() {
             })}
           </div>
           <h2 className="mb-2 mt-4 text-3xl font-semibold"> Certifications</h2>
-          <div className="flex flex-shrink flex-row gap-2">
+          <div className="flex shrink flex-row gap-2">
             <Cert
               src="/AWS-Cloud-Prac.png"
               alt="AWS Cloud Practitioner"

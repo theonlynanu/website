@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BsGithub } from "react-icons/bs";
 import DarkModeBtn from "./DarkModeBtn";
+import type { Variants} from "framer-motion";
 
 function Logo() {
   const router = useRouter();
@@ -51,7 +52,7 @@ function FramerNav() {
   // TODO - Implement null keyframing to reduce lag if the menu toggle is rapidly triggered-
   // TODO - for some reason, using keyframes in variants is throwing a type error and not properly
   // TODO - keying out the animation. Not sure if bug or misunderstanding on my part.
-  const variants = {
+  const variants: Variants = {
     open: {
       x: 0,
       opacity: 1,
