@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import Timer from "./Timer";
 import CircularProgressBar from "./CircularProgressBar";
 import { motion } from "framer-motion";

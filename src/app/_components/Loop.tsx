@@ -1,9 +1,11 @@
 "use client";
 
 import { Float } from "@react-three/drei";
-import { MeshProps } from "@react-three/fiber";
+import { type ThreeElements } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { Mesh } from "three";
+
+type MeshProps = ThreeElements["mesh"];
 
 export default function Loop(props: MeshProps) {
   const meshRef = useRef<Mesh>(null!);

@@ -1,8 +1,10 @@
 "use client";
 
-import { MeshProps, useFrame } from "@react-three/fiber";
+import { type ThreeElements, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { Mesh, Vector3 } from "three";
+
+type MeshProps = ThreeElements["mesh"];
 
 export default function Cone(props: MeshProps) {
   const meshRef = useRef<Mesh>(null!);

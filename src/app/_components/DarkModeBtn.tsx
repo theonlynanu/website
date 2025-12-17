@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
+import { motion, Transition, Variants } from "framer-motion";
 import { clsx } from "clsx";
 import { FiMoon } from "react-icons/fi";
 import { CgSun } from "react-icons/cg";
@@ -25,7 +25,7 @@ const DarkModeBtn = () => {
     isThemeLight ? setTheme("dark") : setTheme("light");
   };
 
-  const switchVariants: any = {
+  const switchVariants: Variants = {
     rest: {
       scale: 1,
       x: 1,
@@ -72,7 +72,7 @@ const DarkModeBtn = () => {
   );
 };
 
-const spring = {
+const spring: Transition = {
   type: "spring",
   stiffness: 700,
   damping: 30,

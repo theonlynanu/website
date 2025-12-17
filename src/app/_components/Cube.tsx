@@ -1,8 +1,10 @@
 "use client";
 import { Decal, useTexture } from "@react-three/drei";
-import { MeshProps, useFrame } from "@react-three/fiber";
+import { type ThreeElements, useFrame } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { Mesh } from "three";
+
+type MeshProps = ThreeElements["mesh"]
 
 export default function Cube(props: MeshProps) {
   // This reference will give us direct access to the mesh

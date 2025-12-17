@@ -1,9 +1,12 @@
 "use client";
 
 import { Point, Points, useTexture } from "@react-three/drei";
-import { PointsProps } from "@react-three/fiber";
+import { ThreeElements } from "@react-three/fiber";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+
+type PointsProps = Omit<ThreeElements["points"], "ref">;
+type Vec3 = [number, number, number]
 
 export default function Stars(props: PointsProps) {
   const [mounted, setMounted] = useState(false);
@@ -22,7 +25,7 @@ export default function Stars(props: PointsProps) {
 
   const currentTheme = theme === "system" ? systemTheme : theme;
 
-  function getRandomParticlePos(particleCount: number): number[] {
+  function getRandomParticlePos(particleCount: number): Vec3[] {
     const arr = new Array(particleCount);
     for (let i = 0; i < particleCount; i++) {
       arr[i] = [
@@ -35,7 +38,7 @@ export default function Stars(props: PointsProps) {
   }
 
   const PARTICLE_COUNT = 100;
-  const particlePositionArray: number[] = getRandomParticlePos(PARTICLE_COUNT);
+  const particlePositionArray: Vec3[] = getRandomParticlePos(PARTICLE_COUNT);
 
   return (
     <Points {...props} limit={PARTICLE_COUNT} range={500}>

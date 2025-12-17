@@ -1,8 +1,10 @@
 "use client";
 import { Decal, Text, useTexture } from "@react-three/drei";
-import { MeshProps, useFrame } from "@react-three/fiber";
+import { type ThreeElements, useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { Mesh } from "three";
+
+type MeshProps = ThreeElements["mesh"];
 
 export default function Eyeball(props: MeshProps) {
   const meshRef = useRef<Mesh>(null!);
