@@ -25,6 +25,10 @@ export default function Cone(props: MeshProps) {
         onClick={() =>
           radialSegments < 32 ? setRadialSegments(radialSegments + 2) : null
         }
+        onContextMenu={(e) => {
+          e.nativeEvent.preventDefault();
+          radialSegments > 8 ? setRadialSegments(radialSegments - 2) : null;
+        }}
         onPointerEnter={() => setHovered(true)}
         onPointerLeave={() => setHovered(false)}
       >

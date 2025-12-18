@@ -20,8 +20,9 @@ export default function Loop(props: MeshProps) {
             ref={meshRef}
             rotation={[0, 2, 0]}
             onClick={() => {
+              const seg: number[] = [4, 5, 6, 7, 8];
               tubeSegments == 32
-                ? setTubeSegments(Math.max(Math.random() * 12, 4))
+                ? setTubeSegments(seg[Math.floor(Math.random() * seg.length)])
                 : setTubeSegments(32);
             }}
             onPointerEnter={() => setHovered(true)}
