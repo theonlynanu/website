@@ -91,7 +91,7 @@ export default function Contact() {
         className="my-6 flex flex-col"
       >
         <PopIn>
-          <label className="mb-6 flex flex-col ">
+          <label className="mb-6 flex flex-col">
             <span>Your Name</span>
             <input
               type="text"
@@ -99,7 +99,7 @@ export default function Contact() {
               value={form.name}
               onChange={handleChange}
               placeholder="Your name"
-              className="max-w-4xl rounded-lg border border-standard-300 bg-standard-100 p-2 text-standard-900 focus:bg-white"
+              className="border-standard-300 bg-standard-100 text-standard-900 max-w-4xl rounded-lg border p-2 focus:bg-white"
             />
           </label>
         </PopIn>
@@ -112,7 +112,7 @@ export default function Contact() {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your email address?"
-              className="max-w-4xl rounded-lg border border-standard-300 bg-standard-100 p-2 text-standard-900 focus:bg-white"
+              className="border-standard-300 bg-standard-100 text-standard-900 max-w-4xl rounded-lg border p-2 focus:bg-white"
             />
           </label>
         </PopIn>
@@ -125,7 +125,7 @@ export default function Contact() {
               value={form.message}
               onChange={handleChange}
               placeholder="What do you want to say?"
-              className="focus-bg-white max-w-9xl rounded-lg border border-standard-300 bg-standard-100 p-2 text-standard-900"
+              className="max-w-9xl border-standard-300 bg-standard-100 text-standard-900 rounded-lg border p-2 focus:bg-white"
             />
           </label>
         </PopIn>
@@ -142,7 +142,7 @@ export default function Contact() {
         <PopIn>
           <motion.button
             type="submit"
-            className="mb-12 mt-6 h-8 w-fit rounded-full bg-standard-primary px-4 text-lg text-standard-900 dark:bg-standard-darkprimary"
+            className="bg-standard-primary text-standard-900 dark:bg-standard-darkprimary mt-6 mb-12 h-8 w-fit rounded-full px-4 text-lg"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

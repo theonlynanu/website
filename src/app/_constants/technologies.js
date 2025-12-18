@@ -1,5 +1,9 @@
 export const technologies = [
   {
+    name: "C",
+    icon:"/tech/c.png"
+  },
+  {
     name: "JavaScript",
     icon: "/tech/javascript.png",
   },

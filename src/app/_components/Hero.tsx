@@ -65,11 +65,11 @@ export default function Hero() {
         <TypeAnimation
           className="text-xl shadow-standard-100 [text-shadow:_0_0px_2px_var(--tw-shadow-color)] dark:shadow-standard-900 "
           sequence={[
-            "A software developer",
+            "I build full-stack applications",
             3000,
-            "A web developer",
+            "I work across systems, data, and the web",
             3000,
-            "An aspiring full-stack engineer",
+            "I'm exploring machine learning and intelligent systems",
             3000,
           ]}
           repeat={Infinity}

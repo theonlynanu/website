@@ -18,7 +18,7 @@ function Cert({ src, alt, link }: { src: string; alt: string; link?: string }) {
 export default function About() {
   return (
     <article
-      className="mx-0 w-full bg-standard-900 pt-24 text-standard-100 dark:bg-standard-100 dark:text-standard-900"
+      className="bg-standard-900 text-standard-100 dark:bg-standard-100 dark:text-standard-900 mx-0 w-full pt-24"
       id="about"
     >
       <header className="mb-12">
@@ -36,47 +36,50 @@ export default function About() {
           <h3 className="text-3xl font-semibold">Get to know me!</h3>
           <p>
             I am a software developer, astronomy lover, and full-time nerd,
-            currently working on building my skills as a{" "}
-            <strong>full-stack engineer</strong>. I&apos;m passionate about
-            building things, and I&apos;m excited to continue learning and
-            applying new things every day.
+            currently earning my{" "}
+            <strong>Master&apos;s in Computer Science</strong> from Northeastern
+            University. I enjoy working across the stack, from designing APIs
+            and databases to building responsive, accessible frontends. I&apos;m
+            always refining my approach to writing clear, maintainable software.
           </p>
           <p>
-            I love the web development community, I&apos;ve had a lot of
-            valuable experiences learning from people and making connections
-            across all fields. I&apos;d love to get the chance to make you a
-            part of my community! Feel free to Connect or Follow me on my{" "}
-            <TbBrandLinkedin className="inline text-standard-500 dark:text-standard-800" />
+            I&apos;m actively exploring machine learning and intelligent
+            systems, particularly where they intersect with practical software
+            engineering. I like to understand how systems behave end-to-end, and
+            I&apos;m motivated by problems that require both technical depth and
+            thoughtful, creative design.
+          </p>
+          <p>
+            My background in astrophysics and chemistry has shaped how I think
+            about software: analytically, experimentally, and with attention to
+            detail. I try to bring that mindset into everything I build. I am
+            currently{" "}
+            <strong className="text-standard-darkconfirm dark:text-standard-confirm">
+              open
+            </strong>{" "}
+            to opportunities where I can contribute meaningfully, continue
+            learning, and grow as an engineer.
+          </p>
+          <p>
+            Feel free to connect or follow me on my{" "}
+            <TbBrandLinkedin className="text-standard-500 dark:text-standard-800 inline" />
             <a
               href="https://www.linkedin.com/in/danyal-ahmed-b187a22b"
               target="_blank"
-              className="font-semibold text-standard-500 hover:underline dark:text-standard-800"
+              className="text-standard-500 dark:text-standard-800 font-semibold hover:underline"
             >
               LinkedIn
             </a>
             , or make a pull request to my{" "}
-            <TbBrandGithub className="inline text-standard-500 dark:text-standard-800" />
+            <TbBrandGithub className="text-standard-500 dark:text-standard-800 inline" />
             <a
               href="https://github.com/theonlynanu"
               target="_blank"
-              className="font-semibold text-standard-500 hover:underline dark:text-standard-800"
+              className="text-standard-500 dark:text-standard-800 font-semibold hover:underline"
             >
               GitHub
             </a>
-            ! I am open to freelance work for both personal and business
-            websites.
-          </p>
-          <p>
-            My love for design and technology inspired me throughout my
-            background in astrophysics and chemistry. I like to leverage my wide
-            array of experiences and influences to create, both with elegance
-            and functionality in mind. I am currently{" "}
-            <strong className="text-standard-darkconfirm dark:text-standard-confirm">
-              open
-            </strong>{" "}
-            to job opportunities where I can contribute, learn, and grow. If you
-            have a good opportunity that matches my experience and skillset,
-            please feel free to contact me!
+            !
           </p>
         </section>
         <section className="m-8 grow basis-0">
@@ -84,17 +87,21 @@ export default function About() {
           <div className="flex flex-wrap gap-2">
             {technologies.map((technology, index) => {
               return (
-                <PopIn key={index} initial={{opacity: 0}} animate={{opacity: 1}}>
+                <PopIn
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
                   <span
                     key={`child-${index}`}
-                    className="mb-2 rounded-md border border-standard-600 bg-standard-800 px-2 py-1 text-xs md:text-base dark:border-standard-300 dark:bg-standard-200"
+                    className="border-standard-600 bg-standard-800 dark:border-standard-300 dark:bg-standard-200 mb-2 rounded-md border px-2 py-1 text-xs md:text-base"
                   >
                     <Image
                       src={technology.icon}
                       alt={technology.name}
-                      width={0}
-                      height={0}
-                      className="mr-1 inline w-4 align-middle md:w-6 md:align-top"
+                      width={24}
+                      height={24}
+                      className="mr-1 inline w-4 object-contain p-0.5 align-middle md:w-6 md:align-top"
                     />
                     {technology.name}
                   </span>
@@ -102,7 +109,7 @@ export default function About() {
               );
             })}
           </div>
-          <h2 className="mb-2 mt-4 text-3xl font-semibold"> Certifications</h2>
+          <h2 className="mt-4 mb-2 text-3xl font-semibold"> Certifications</h2>
           <div className="flex shrink flex-row gap-2">
             <Cert
               src="/AWS-Cloud-Prac.png"
