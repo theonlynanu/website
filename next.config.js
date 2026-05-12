@@ -5,9 +5,6 @@ const nextConfig = {
   experimental: {
     mdxRs: true,
   },
-  env: {
-    API_KEY: process.env.API_KEY,
-  },
 };
 
 // Using MDX with remark or rehype plugins requires a touch more setup for this
