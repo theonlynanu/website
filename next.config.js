@@ -8,9 +8,6 @@ const nextConfig = {
   env: {
     API_KEY: process.env.API_KEY,
   },
-  compiler: {
-    styledComponents: true,
-  },
 };
 
 // Using MDX with remark or rehype plugins requires a touch more setup for this
