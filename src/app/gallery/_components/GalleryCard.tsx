@@ -39,10 +39,11 @@ export default function GalleryCard({
     },
     noHover: {
       scale: 1,
+      boxShadow: "0px 0px 0px",
     },
     clicked: {
       scale: 0.95,
-      boxShadow: "",
+      boxShadow: "0px 0px 0px",
     },
   };
 
@@ -60,7 +61,7 @@ export default function GalleryCard({
 
   return (
     <motion.div
-      className="mx-8 my-8 h-56 w-48 min-w-36 max-w-60 rounded-lg border-2 border-standard-800 bg-standard-300 p-4 sm:h-72 sm:w-52 dark:border-standard-300 dark:bg-standard-700"
+      className="border-standard-800 bg-standard-300 dark:border-standard-300 dark:bg-standard-700 mx-8 my-8 h-56 w-48 max-w-60 min-w-36 rounded-lg border-2 p-4 sm:h-72 sm:w-52"
       variants={cardVariant}
       whileHover="hovered"
       whileTap="clicked"
@@ -74,7 +75,7 @@ export default function GalleryCard({
           className="mx-auto w-fit rounded-2xl"
         >
           <Image
-            className="mx-auto h-28 w-28  p-6 align-middle md:h-36 md:w-36"
+            className="mx-auto h-28 w-28 p-6 align-middle md:h-36 md:w-36"
             src={
               currentTheme === "light" ? image : darkImage ? darkImage : image
             }
