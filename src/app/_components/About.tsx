@@ -36,11 +36,12 @@ export default function About() {
           <h3 className="text-3xl font-semibold">Get to know me!</h3>
           <p>
             I am a software developer, astronomy lover, and full-time nerd,
-            currently earning my{" "}
-            <strong>Master&apos;s in Computer Science</strong> from Northeastern
-            University. I enjoy working across the stack, from designing APIs
-            and databases to building responsive, accessible frontends. I&apos;m
-            always refining my approach to writing clear, maintainable software.
+            currently earning my
+            <strong> Master&apos;s in Computer Science </strong> from
+            Northeastern University. I enjoy working across the stack, from
+            designing APIs and databases to building responsive, accessible
+            frontends. I&apos;m always refining my approach to writing clear,
+            maintainable software.
           </p>
           <p>
             I&apos;m actively exploring machine learning and intelligent
