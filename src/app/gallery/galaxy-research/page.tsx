@@ -201,6 +201,7 @@ export default function Index() {
             alt="Confusion matrices for CE (left) and KL (right) models, showing the shift in misclassification at the elliptical / face-on non-spiral boundary"
             width={2000}
             height={900}
+            sizes="(min-width: 1024px) 1024px, 100vw"
             className="h-auto w-full rounded"
           />
           <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
@@ -235,6 +236,7 @@ export default function Index() {
             alt="Reliability diagrams for the CE and KL models. CE tracks the diagonal of perfect calibration. KL's bars sit consistently above the diagonal, indicating that its predictions are systematically less confident than its actual accuracy warrants."
             width={1800}
             height={800}
+            sizes="(min-width: 896px) 896px, 100vw"
             className="h-auto w-full rounded"
           />
           <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
@@ -329,6 +331,7 @@ export default function Index() {
             alt="Macro-F1 vs. redshift bin for all three models. Solid lines show in-domain bins, dashed lines show out-of-domain bins."
             width={1800}
             height={1000}
+            sizes="(min-width: 896px) 896px, 100vw"
             className="h-auto w-full rounded"
           />
           <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
@@ -369,6 +372,7 @@ export default function Index() {
             alt="Per-class accuracy vs. redshift for all three models, broken down by class. Ellipticals show a sharp collapse at high redshift across all three models. Face-on non-spirals show a counterintuitive rise that turns out to be an over-prediction artifact."
             width={2000}
             height={1300}
+            sizes="(min-width: 1024px) 1024px, 100vw"
             className="h-auto w-full rounded"
           />
           <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
@@ -415,6 +419,7 @@ export default function Index() {
           <div>
             <Image
               src="/research/iid-confusion.jpg"
+              sizes="(min-width: 768px) 496px, 100vw"
               alt="CNN confusion matrix on the in-distribution test set"
               width={1200}
               height={1000}
@@ -427,6 +432,7 @@ export default function Index() {
           <div>
             <Image
               src="/research/ood-confusion.jpg"
+              sizes="(min-width: 768px) 496px, 100vw"
               alt="CNN confusion matrix on the out-of-distribution test set, showing roughly half of all ellipticals being misclassified as face-on non-spirals"
               width={1200}
               height={1000}

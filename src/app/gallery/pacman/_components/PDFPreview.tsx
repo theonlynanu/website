@@ -6,8 +6,6 @@ import {
   IoIosArrowDropupCircle,
 } from "react-icons/io";
 
-import clsx from "clsx";
-
 export default function Preview() {
   const [previewVisible, setPreviewVisible] = useState(false);
   return (
@@ -23,13 +21,13 @@ export default function Preview() {
           <IoIosArrowDropdownCircle className="h-6 self-center" />
         )}
       </button>
-      <iframe
-        className={clsx(
-          "mx-12 h-screen w-5/6 p-8",
-          previewVisible ? "visible" : "hidden"
-        )}
-        src="/files/Q-Learning.pdf"
-      />
+      {previewVisible && (
+        <iframe
+          className="mx-12 h-screen w-5/6 p-8"
+          src="/files/Q-Learning.pdf"
+          loading="lazy"
+        />
+      )}
     </>
   );
 }

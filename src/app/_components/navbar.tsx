@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ReactNode, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { BsGithub } from "react-icons/bs";
 import DarkModeBtn from "./DarkModeBtn";
@@ -11,18 +12,24 @@ function Logo() {
   const router = useRouter();
   const isBrowser = () => typeof window !== "undefined";
   return (
-    <motion.img
-      src="/profile.png"
-      width={48}
-      className="gap mr-2 flex h-6 w-6 shrink-0 grow-0 cursor-pointer items-center justify-center rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2 md:h-8 md:w-8"
+    <motion.div
+      className="mr-2 flex shrink-0 grow-0 cursor-pointer items-center justify-center"
       onClick={() => {
         if (!isBrowser()) return;
         window.scrollTo({ top: 0, behavior: "smooth" });
         router.push("/", { scroll: false });
       }}
-      alt="Home"
       whileHover={{ scale: 1.1 }}
-    />
+    >
+      <Image
+        src="/profile.png"
+        alt="Home"
+        width={96}
+        height={96}
+        priority
+        className="h-6 w-6 rounded-full outline outline-2 outline-standard-500 ring-2 ring-standard-400 ring-offset-1 hover:outline-offset-4 hover:ring-offset-2 md:h-8 md:w-8"
+      />
+    </motion.div>
   );
 }
 
