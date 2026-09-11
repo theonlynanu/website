@@ -1,61 +1,16 @@
 "use client";
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import useWindowDimensions from "../_utils/useWindowDimension";
-import Cube from "./Cube";
-import Loop from "./Loop";
-import Cone from "./Cone";
-import Stars from "./Stars";
 import { TypeAnimation } from "react-type-animation";
-import Eyeball from "./Eyeball";
 import { montaga } from "../../fonts";
 import { motion } from "framer-motion";
+import HeroCanvas from "./HeroCanvas";
 
 export default function Hero() {
-  const { width, height } = useWindowDimensions();
-
   return (
-    <article className="relative h-[80vh] bg-standard-100 dark:bg-standard-900">
-      <Suspense fallback={null}>
-        <Canvas
-          className=" h-96 p-0"
-          camera={{ position: [0, 0, 10], zoom: 50 }}
-          orthographic
-        >
-          <ambientLight intensity={1.5} />
-          <pointLight position={[0, 2, 4]} intensity={175} />
-          <Cube
-            position={[
-              width ? -(width / 80) : -15,
-              height ? -(height / 1500) : -8,
-              -5,
-            ]}
-          />
-          <Loop
-            position={[width ? width / 200 : 2, height ? height / 5000 : -1, 0]}
-            scale={1}
-          />
-          <Cone
-            position={[
-              width ? -width / 200 : -2,
-              height ? height / 400 : 4,
-              -8,
-            ]}
-            scale={width ? Math.max(width / 1250, 0.8) : 1.4}
-          />
-          <Stars />
-          <Eyeball
-            position={[
-              width ? -width / 500 : -1.5,
-              height ? -height / 200 : -3.7,
-              0,
-            ]}
-          />
-        </Canvas>
-      </Suspense>
-      <span className="absolute left-0 right-0 top-0 mx-auto my-auto block w-1/2 rounded-xl text-center">
+    <article className="bg-standard-100 dark:bg-standard-900 relative h-[80vh]">
+      <HeroCanvas />
+      <span className="absolute top-0 right-0 left-0 mx-auto my-auto block w-1/2 rounded-xl text-center">
         <div
-          className={`m-8 mx-auto w-full text-center text-6xl text-standard-900 shadow-standard-100 [text-shadow:_0_0px_2px_var(--tw-shadow-color)] dark:text-standard-100 dark:shadow-standard-900 ${montaga.className} font-serif font-light`}
+          className={`text-standard-900 shadow-standard-100 dark:text-standard-100 dark:shadow-standard-900 m-8 mx-auto w-full text-center text-6xl [text-shadow:_0_0px_2px_var(--tw-shadow-color)] ${montaga.className} font-serif font-light`}
         >
           Hi, I&apos;m Danyal
         </div>
@@ -63,7 +18,7 @@ export default function Hero() {
           // TODO Externalize TypeAnimation Component
         }
         <TypeAnimation
-          className="text-xl shadow-standard-100 [text-shadow:_0_0px_2px_var(--tw-shadow-color)] dark:shadow-standard-900 "
+          className="shadow-standard-100 dark:shadow-standard-900 text-xl [text-shadow:_0_0px_2px_var(--tw-shadow-color)]"
           sequence={[
             "I build full-stack applications",
             3000,
@@ -77,7 +32,7 @@ export default function Hero() {
         />
       </span>
       <motion.div
-        className="pxy absolute bottom-48 left-0 right-0 mx-auto w-fit rounded-full bg-standard-700 px-2 py-1 text-center text-2xl text-standard-100 opacity-35"
+        className="pxy bg-standard-700 text-standard-100 absolute right-0 bottom-48 left-0 mx-auto w-fit rounded-full px-2 py-1 text-center text-2xl opacity-35"
         animate={{ opacity: [null, 0.5, 0] }}
         initial={{ opacity: 0 }}
         transition={{

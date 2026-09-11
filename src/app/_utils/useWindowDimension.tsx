@@ -11,15 +11,25 @@ const useWindowDimensions = (): WindowDimensions => {
     height: undefined,
   });
   useEffect(() => {
-    function handleResize(): void {
+    let frame = 0;
+    function read(): void {
       setWindowDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
       });
     }
-    handleResize();
+    // Resize fires far faster than we can usefully re-render, and this hook
+    // drives the 3D scene's layout — so collapse a burst into one update.
+    function handleResize(): void {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(read);
+    }
+    read();
     window.addEventListener("resize", handleResize);
-    return (): void => window.removeEventListener("resize", handleResize);
+    return (): void => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []); // Empty array ensures that effect is only run on mount
 
   return windowDimensions;
