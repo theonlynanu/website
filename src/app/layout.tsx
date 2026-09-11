@@ -17,11 +17,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="h-full scroll-smooth"
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body
         className={
           inter.className +
-          "overscroll-y-none bg-standard-100 text-standard-900 dark:bg-standard-900 dark:text-standard-100"
+          "bg-standard-100 text-standard-900 dark:bg-standard-900 dark:text-standard-100 overscroll-y-none"
         }
       >
         <Providers>
