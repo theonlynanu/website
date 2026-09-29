@@ -159,7 +159,7 @@ export default function SoftLabelWidget() {
         thousandths of the vote. Under <strong>vote distribution</strong>, it
         learns what humans actually saw: a genuine 49/49 split between spiral
         and non-spiral, with virtually no signal for the other two classes.
-        Soft-label training preserves that disagreement; hard-label training
+        Soft-label training preserves that disagreement while hard-label training
         discards it.
       </figcaption>
     </figure>

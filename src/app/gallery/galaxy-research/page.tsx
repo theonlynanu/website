@@ -34,13 +34,12 @@ export default function Index() {
         <h1 className={`text-5xl ${montaga.className}`}>
           Galaxy Morphology Research
         </h1>
-        <p className="text-standard-700 dark:text-standard-300 mx-4 mt-2 text-base md:text-lg">
-          Two projects on automated classification of galaxy images using the
+        <p className="mx-4 mt-2 text-base text-standard-700 md:text-lg dark:text-standard-300">
+          Research on automated classification of galaxy images using convolutional neural networks on the
           GalaxyZoo2 dataset.
         </p>
 
-        <h4 className="text-standard-500 mx-4 mt-4 text-lg">Jump to section</h4>
-        <nav className="mt-2 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <nav className="mt-4 mb-2 flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <a href="#foundations" className={linkClass}>
             Foundations
           </a>
@@ -66,8 +65,8 @@ export default function Index() {
           tested on much more distant ones.
         </p>
         <p className={proseP}>
-          Because they share so much machinery, I&apos;ve put them on a single
-          page. The Foundations section below covers the structure and nature of
+          Both lines of research use models with the same underlying structure.
+          The Foundations section below covers the structure and nature of
           the GZ2 dataset, as well as the model architecture I used. Each
           project section then focuses on what changed and what happened. Both
           papers are available in full at the bottom.
@@ -83,18 +82,27 @@ export default function Index() {
           GalaxyZoo2 is a citizen-science dataset of roughly 240,000 galaxy
           images from the Sloan Digital Sky Survey. Each galaxy was shown to
           many volunteers who answered a tree of yes/no questions about its
-          appearance — &ldquo;is it smooth or featured?&rdquo;, &ldquo;is the
+          appearance, such as &ldquo;is it smooth or featured?&rdquo;, &ldquo;is the
           disk seen edge-on?&rdquo;, &ldquo;is there a spiral pattern?&rdquo;
           and so on. Instead of a single label, every galaxy comes with a
           distribution of votes across the tree.
         </p>
+        <p className={ proseP}>
+          The lack of singular true labels in the data set represents a wide-spanning
+          challenge prevalent in many machine learning tasks: how do we train 
+          models for tasks with inherent uncertainty? GZ2&apos;s labeling scheme
+          being fractional represents real human disagreement. Rather than treating
+          this as a flaw to be overcome, my question became how we can use this
+          as additional information to create better training schemes.
+
+        </p>
         <p className={proseP}>
-          For both projects, I collapsed the 37-node tree into four classes
+          Given the short-term scope of this project, I collapsed the 37-node tree into four classes
           defined by the presence of distinct visual features:{" "}
           <em>Elliptical</em> (smooth, featureless blobs), <em>Edge-on disk</em>{" "}
           (disks seen from the side), <em>Face-on spiral</em> (clear spiral
           arms), and <em>Face-on non-spiral</em> (featured but without visible
-          spiral structure). I dropped galaxies where no class got more than 70%
+          spiral structure). I dropped galaxies where no single class got more than 70%
           of the vote, leaving about 178,000 confidently-labeled galaxies.
         </p>
 
@@ -103,8 +111,10 @@ export default function Index() {
 
         <h3 className={sectionH3()}>The model: a compact CNN</h3>
         <p className={proseP}>
-          Both projects use the same convolutional neural network, designed to
-          be small enough that any difference in behavior between training
+          Both projects use the same convolutional neural network. I made the
+          decision to keep the architecture fairly basic, as more complex CNNs
+          tend towards overconfidence (<a href="https://arxiv.org/abs/1706.04599" className="underline not-visited:text-standard-500">Guo et al., 2017</a>).
+          The architecture used was chosen to be small enough that any difference in behavior between training
           regimes can plausibly be attributed to the training setup itself,
           rather than to model architecture or hyperparameter choices. It has
           about 1.87 million parameters, takes a 224×224 RGB image as input, and
@@ -140,20 +150,23 @@ export default function Index() {
 
         <h3 className={sectionH3()}>The question</h3>
         <p className={proseP}>
-          Galaxies at billions of light-years are blurry, faint, and partly
-          obscured. Two human annotators looking at the same image can
-          reasonably disagree about whether a feature is a spiral arm or just
-          noise. The convention in this field is to take the majority vote and
-          train the model on that as a one-hot label — implicitly throwing away
-          the disagreement.
+          Galaxies at billions of light-years are blurry, faint, and can obscured
+          due to phenomena such as from occlusion or lensing. Two human annotators
+          looking at the same image can reasonably disagree about whether a feature
+          is a spiral arm or just noise. The convention in this field is to take
+          the majority vote and train the model on that as a one-hot label. My
+          thought was that hiding the disagreement may serve to hide real information
+          that can be reasoned about.
         </p>
         <p className={proseP}>
-          But that disagreement is information. If 49% of annotators thought a
+          If 49% of annotators thought a
           galaxy was a face-on spiral and 49% thought it was a face-on
           non-spiral, telling the model &ldquo;the answer is spiral&rdquo; is a
-          lie of sorts. What if we trained the model on <em>both</em> — feeding
+          lie of sorts. What if we trained the model on <em>both</em>, feeding
           it the full distribution of human votes and asking it to match that
-          distribution?
+          distribution? In this way, one can say, the "correctness" is not measured
+          by a singular target, but by emulating the disagreement of subject matter
+          experts.
         </p>
 
         {/* ─── Interactive widget 3: Soft label intuition ───────────── */}
@@ -162,7 +175,7 @@ export default function Index() {
         <h3 className={sectionH3()}>The setup</h3>
         <p className={proseP}>
           I trained two identical CNNs with identical data, identical
-          hyperparameters, identical seeds — differing only in the loss
+          hyperparameters, and identical seeds, differing only in the loss
           function. The first (&ldquo;CE&rdquo;) used standard cross-entropy
           against majority-vote labels. The second (&ldquo;KL&rdquo;) used a
           soft-target cross-entropy equivalent to minimizing KL divergence from
@@ -170,16 +183,14 @@ export default function Index() {
           35,000-image training set.
         </p>
 
-        <h3 className={sectionH3()}>The headline result</h3>
+        <h3 className={sectionH3()}>The headline</h3>
         <p className={proseP}>
           Soft-label training improved overall accuracy by 3.4 percentage points
           (80.4% → 83.8%). It also produced output distributions that tracked
-          human vote fractions about 40% more closely on average. That&apos;s
-          the headline, and it&apos;s the kind of result you can fit in an
-          abstract.
+          human vote fractions about 40% more closely on average.
         </p>
         <p className={proseP}>
-          The more interesting part is what happened underneath that 3.4%.
+          What I found more interesting is what happened underneath that 3.4%.
         </p>
 
         <PerClassDeltaChart />
@@ -204,27 +215,27 @@ export default function Index() {
             sizes="(min-width: 1024px) 1024px, 100vw"
             className="h-auto w-full rounded"
           />
-          <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
+          <figcaption className="mt-2 text-center text-xs italic text-standard-700 dark:text-standard-300">
             Confusion matrices for the hard-label (CE) and soft-label (KL)
             models. Rows are true classes, columns are predictions. The largest
-            off-diagonal entries — and the biggest changes between the two
-            models — are at the elliptical / face-on non-spiral boundary.
+            off-diagonal entries (and the biggest changes between the two
+            models) are at the elliptical / face-on non-spiral boundary.
           </figcaption>
         </figure>
 
         <h3 className={sectionH3()}>
-          The interesting paradox: better accuracy, worse calibration
+          An interesting paradox: better accuracy, worse calibration
         </h3>
         <p className={proseP}>
-          Modern neural networks are famous for being overconfident — they tend
-          to predict their answers with higher probability than they deserve.
+          Modern neural networks are famous for being overconfident. They tend
+          to predict their answers with a higher probability than they deserve.
           One hope for soft-label training was that exposure to human-style
-          uncertainty during training would fix this. It did the opposite.
+          uncertainty during training would fix this. In fact, it seemingly over-corrected.
         </p>
         <p className={proseP}>
           The CE model is, surprisingly, well-calibrated: its confidence tracks
           its accuracy almost perfectly. The KL model is{" "}
-          <em>systematically underconfident</em> — when it says it&apos;s 80%
+          <em>systematically underconfident</em>. When it says it&apos;s 80%
           sure, it&apos;s actually right about 93% of the time. Across most
           confidence bins, its accuracy exceeds its reported confidence by 8-18
           points.
@@ -239,9 +250,9 @@ export default function Index() {
             sizes="(min-width: 896px) 896px, 100vw"
             className="h-auto w-full rounded"
           />
-          <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
+          <figcaption className="mt-2 text-center text-xs italic text-standard-700 dark:text-standard-300">
             Reliability diagrams. The dashed diagonal is perfect calibration.
-            CE&apos;s bars hug the diagonal; KL&apos;s sit consistently above
+            CE&apos;s bars hug the diagonal or show overconfidence. KL&apos;s sit consistently above
             it, meaning the model under-reports how often it&apos;s right.
           </figcaption>
         </figure>
@@ -257,7 +268,7 @@ export default function Index() {
           class.
         </p>
 
-        <h3 className={sectionH3()}>Caveats worth taking seriously</h3>
+        <h3 className={sectionH3()}>Caveats to consider</h3>
         <p className={proseP}>
           The branch-product structure of the soft targets isn&apos;t symmetric:
           an elliptical target is a single vote fraction, while a face-on
@@ -290,7 +301,8 @@ export default function Index() {
           galaxies at low redshift — meaning nearby galaxies, where the images
           are sharp and the morphology is clear. They&apos;re then applied
           across surveys that span a much wider range of distances. At higher
-          redshift, galaxies appear smaller, fainter, and blurrier; features
+          redshift, galaxies appear smaller, fainter, and blurrier, with a higher
+          chance of intervention by foreground structures. Features 
           that cleanly distinguish a spiral arm at z ≈ 0.05 may be invisible at
           z ≈ 0.15.
         </p>
@@ -316,7 +328,7 @@ export default function Index() {
           with no peeking at the out-of-domain data.
         </p>
 
-        <h3 className={sectionH3()}>The headline result</h3>
+        <h3 className={sectionH3()}>Results</h3>
         <p className={proseP}>
           The CNN is best in-domain, best out-of-domain, and has the smallest
           drop. By macro-F1, the SVM falls from 0.598 to 0.452, the GBDT from
@@ -334,7 +346,7 @@ export default function Index() {
             sizes="(min-width: 896px) 896px, 100vw"
             className="h-auto w-full rounded"
           />
-          <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
+          <figcaption className="mt-2 text-center text-xs italic text-standard-700 dark:text-standard-300">
             Macro-F1 against median redshift in each bin. The vertical line
             marks the train/test boundary at z = 0.102. The CNN holds its lead,
             but all three models trend down at similar rates.
@@ -343,11 +355,11 @@ export default function Index() {
 
         <h3 className={sectionH3()}>Capacity doesn&apos;t map to robustness</h3>
         <p className={proseP}>
-          The GBDT — which is more expressive than the SVM by every reasonable
-          measure — degrades faster. Its per-unit-redshift slope is -3.49,
+          The GBDT, which is more expressive than the SVM by every reasonable
+          measure, nonetheless degrades faster. Its per-unit-redshift slope is -3.49,
           compared to -2.37 for the SVM and -2.51 for the CNN. At the very
           highest redshifts the SVM actually overtakes the GBDT. My
-          interpretation: tree ensembles split feature space along axis-aligned
+          interpretation is that tree ensembles split feature space along axis-aligned
           thresholds, and when feature distributions drift smoothly under domain
           change (PSF blur shifts the concentration distribution, etc.), the
           trained thresholds end up in distribution regions the model never saw
@@ -355,12 +367,12 @@ export default function Index() {
           distributed representations both degrade more gracefully.
         </p>
 
-        <h3 className={sectionH3()}>The shared failure mode</h3>
+        <h3 className={sectionH3()}>A shared failure mode</h3>
         <p className={proseP}>
           All three models collapse on elliptical galaxies at high redshift,
           along near-parallel lines. The CNN&apos;s elliptical accuracy drops
           from 90% in-domain to 51% on the held-out tail. The mass mostly ends
-          up in the face-on non-spiral column — which, looked at from the other
+          up in the face-on non-spiral column, which, looked at from the other
           side, makes face-on non-spiral predictions <em>more frequent</em>, not
           because the model got better at non-spirals but because non-spiral
           became a dumping ground for objects whose features had blurred away.
@@ -375,7 +387,7 @@ export default function Index() {
             sizes="(min-width: 1024px) 1024px, 100vw"
             className="h-auto w-full rounded"
           />
-          <figcaption className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
+          <figcaption className="mt-2 text-center text-xs italic text-standard-700 dark:text-standard-300">
             Per-class accuracy vs. redshift. The elliptical panel shows the
             shared collapse; the face-on non-spiral panel shows the
             corresponding rise, which is the same phenomenon viewed from the
@@ -385,9 +397,9 @@ export default function Index() {
 
         <p className={proseP}>
           I don&apos;t think this elliptical collapse reflects a modeling
-          weakness — it&apos;s shared across three very different models with
-          very different inductive biases. It reflects a physical limit. At high
-          redshift, the distinguishing surface-brightness features of
+          weakness, as it is shared across three very different models with
+          very different inductive biases. I think it instead reflects a physical
+          limit. At high redshift, the distinguishing surface-brightness features of
           ellipticals literally become invisible. A faint, smeared spiral and a
           faint, smeared elliptical can produce visually indistinguishable
           images, and no amount of learned representation compensates for
@@ -403,12 +415,12 @@ export default function Index() {
           and the held-out galaxies appear in roughly equal numbers, at
           essentially identical redshift (around z ≈ 0.089). Comparing
           performance within that single bin isolates the domain effect from the
-          redshift effect — any gap there can&apos;t be blamed on the images
+          redshift effect since any gap there can&apos;t be blamed on the images
           themselves being harder.
         </p>
         <p className={proseP}>
           At identical redshift, the CNN loses 3.2 macro-F1 points crossing the
-          domain boundary; the SVM loses 7.5. That&apos;s a real,
+          domain boundary while the SVM loses 7.5. This seems to be a real
           model-attributable robustness advantage, not just better starting
           accuracy. It&apos;s also a useful reminder that aggregate IID → OOD
           numbers can confound &ldquo;the new domain is genuinely harder&rdquo;
@@ -425,7 +437,7 @@ export default function Index() {
               height={1000}
               className="h-auto w-full rounded"
             />
-            <p className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
+            <p className="mt-2 text-center text-xs italic text-standard-700 dark:text-standard-300">
               CNN, in-domain test set
             </p>
           </div>
@@ -438,7 +450,7 @@ export default function Index() {
               height={1000}
               className="h-auto w-full rounded"
             />
-            <p className="text-standard-700 dark:text-standard-300 mt-2 text-center text-xs italic">
+            <p className="mt-2 text-center text-xs italic text-standard-700 dark:text-standard-300">
               CNN, out-of-domain test set
             </p>
           </div>
@@ -453,8 +465,8 @@ export default function Index() {
 
         <h3 className={sectionH3()}>The takeaway</h3>
         <p className={proseP}>
-          More model capacity helps, but not as much as you&apos;d expect, and
-          not where you&apos;d expect. The CNN holds the top spot at every
+          More model capacity helps, but not as much as one may expect, nor
+          <em>where</em> one might expect. The CNN holds the top spot at every
           redshift, but a large component of the degradation everyone shows
           isn&apos;t a modeling failure — it&apos;s information that isn&apos;t
           in the image anymore. For astronomical pipelines applied across
@@ -475,7 +487,7 @@ export default function Index() {
             href="https://github.com/theonlynanu/GalaxyZooClassification"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-standard-700 dark:text-standard-300 hover:underline"
+            className="text-standard-700 hover:underline dark:text-standard-300"
           >
             github.com/theonlynanu/GalaxyZooClassification
           </a>
@@ -484,14 +496,14 @@ export default function Index() {
 
         <div className="mx-8 mt-8 flex flex-wrap gap-4 md:mx-12">
           <a
-            className={`bg-standard-100 dark:bg-standard-900 hover:border-standard-900 hover:bg-standard-300 rounded-2xl border px-4 py-2 text-base`}
+            className={`rounded-2xl border bg-standard-100 px-4 py-2 text-base hover:border-standard-900 hover:bg-standard-300 dark:bg-standard-900`}
             download
             href="/files/SoftLabels.pdf"
           >
             Download Project 1 paper (PDF)
           </a>
           <a
-            className={`bg-standard-100 dark:bg-standard-900 hover:border-standard-900 hover:bg-standard-300 rounded-2xl border px-4 py-2 text-base`}
+            className={`rounded-2xl border bg-standard-100 px-4 py-2 text-base hover:border-standard-900 hover:bg-standard-300 dark:bg-standard-900`}
             download
             href="/files/DomainShift.pdf"
           >
@@ -509,13 +521,13 @@ export default function Index() {
         />
 
         <p
-          className={`${proseP} text-standard-700 dark:text-standard-300 mt-12 text-sm`}
+          className={`${proseP} mt-12 text-sm text-standard-700 dark:text-standard-300`}
         >
           If you have questions, spot a bug in the analysis, or want to discuss
           any of this, feel free to reach out via the{" "}
           <Link
             href="/contact"
-            className="text-standard-900 dark:text-standard-100 hover:underline"
+            className="text-standard-900 hover:underline dark:text-standard-100"
           >
             contact page
           </Link>
