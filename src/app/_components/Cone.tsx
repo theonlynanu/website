@@ -13,7 +13,9 @@ export default function Cone(props: MeshProps) {
 
   const axis = new Vector3(0, 1, 0);
   useFrame((state, delta) => {
-    meshRef.current.rotateOnAxis(axis, delta);
+    // Same resume spike as Cube — an uncapped delta snaps the cone to a
+    // random orientation when the frameloop restarts.
+    meshRef.current.rotateOnAxis(axis, Math.min(delta, 0.1));
   });
 
   return (
